@@ -13,7 +13,7 @@ apply plugin: 'application'
 
 group 'client'
 version '0.0.1'
-mainClassName = "io.ktor.server.netty.EngineMain"
+mainClassName = "at.gleb.bonusclass.ApplicationKt"
 
 sourceSets {
     main.kotlin.srcDirs = main.java.srcDirs = ['src']
