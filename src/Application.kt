@@ -14,7 +14,7 @@ import io.ktor.thymeleaf.ThymeleafContent
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 
 fun main() {
-    val server = embeddedServer(Netty, port = 8080) {
+    val server = embeddedServer(Netty, port = System.getenv("PORT")?.toInt() ?: 8080) {
 
         install(Thymeleaf) {
             setTemplateResolver(ClassLoaderTemplateResolver().apply {
