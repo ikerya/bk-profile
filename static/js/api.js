@@ -1,5 +1,5 @@
-//var serverAddress = "http://api.bonus-class.ru";
- var serverAddress = "http://0.0.0.0:8081";
+var serverAddress = "http://api.bonus-class.ru";
+// var serverAddress = "http://0.0.0.0:8081";
 
 function checkData(data, onComplete, onError) {
     data = eval(data);
