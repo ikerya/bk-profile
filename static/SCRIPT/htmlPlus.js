@@ -23,7 +23,7 @@ const EMAIL_TPL = /^[\w\dа-я-_\.]+(@)[\w\dа-я-_\.]+$/i;
 const LOAD_ERROR= 'Ошибка Сети при загрузке страницы\n' // не заводим сообщение в словарь, оно должно отображаться, даже если словарь не прибыл
 const millisecToWeek = 604800000; // преобразование миллисекунд в недели
 // Начало пути к ключевым api
-const apiPath = 'https://api.bonus-class.ru'
+//const apiPath = 'https://api.bonus-class.ru'
 //const apiPath = 'http://0.0.0.0:8081'
 const noImgLink = 'https://vk.com/images/camera_400.png' // ссылка на изображение по умолчанию
 const testPollURL = apiPath + '/polls/5c97e844b639447e15030c43' // результаты голосования

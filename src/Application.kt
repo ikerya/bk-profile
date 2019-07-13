@@ -14,6 +14,28 @@ import io.ktor.server.netty.Netty
 import io.ktor.sessions.*
 import java.util.concurrent.ThreadLocalRandom
 
+
+val SCHEME
+    get() = if (System.getenv("PORT") != null) {
+        "https"
+    } else {
+        "http"
+    }
+
+val API_URL
+    get() = if (System.getenv("PORT") != null) {
+        "$SCHEME://api.bonus-class.ru"
+    } else {
+        "$SCHEME://0.0.0.0:8081"
+    }
+
+val SITE_URL
+    get() = if (System.getenv("PORT") != null) {
+        "$SCHEME://bonus-class.ru"
+    } else {
+        "$SCHEME://0.0.0.0:8080"
+    }
+
 fun main() {
     val server = embeddedServer(Netty, port = System.getenv("PORT")?.toInt() ?: 8080) {
         install(FreeMarker) {
@@ -32,26 +54,38 @@ fun main() {
                 files("static")
             }
 
-           get("/") {
-                call.respond(FreeMarkerContent("index.html", call.accessToken(), "e"))
+            get("/") {
+                call.respond(FreeMarkerContent("index.html", call.options(), "e"))
             }
 
+            get("/ref{userId}/{landingId}") {
+                val uid = call.parameters["userId"]
+                val landingId = call.parameters["landingId"]
+
+                val refUrl = "$SITE_URL/reg?ref=$uid"
+                call.respond(
+                    FreeMarkerContent(
+                        "landing.html", call.options() +
+                                mapOf("refUrl" to refUrl, "landingId" to landingId)
+                    )
+                )
+            }
 
             get("/reg") {
-                call.respond(FreeMarkerContent("reg.html", call.accessToken()))
+                call.respond(FreeMarkerContent("reg.html", call.options()))
             }
 
             get("/reg/apply/{regId}") {
                 val regId = call.parameters["regId"]
-                call.respond(FreeMarkerContent("reg_apply.html", call.accessToken() + mapOf("regId" to (regId ?: ""))))
+                call.respond(FreeMarkerContent("reg_apply.html", call.options() + mapOf("regId" to (regId ?: ""))))
             }
 
             get("/user") {
-                call.respond(FreeMarkerContent("index2.html", call.accessToken()))
+                call.respond(FreeMarkerContent("index2.html", call.options()))
             }
 
             get("/login") {
-                call.respond(FreeMarkerContent("login.html", call.accessToken()))
+                call.respond(FreeMarkerContent("login.html", call.options()))
             }
 
             get("/reg/session/start/{accessToken}") {
@@ -72,12 +106,17 @@ fun main() {
 val appVersion by lazy {
     rnd(1, 1000000)
 }
+
 fun rnd(min: Int, max: Int) = ThreadLocalRandom.current().nextInt(min, max + 1)
 
 
-private fun ApplicationCall.accessToken(): Map<String, String> {
+private fun ApplicationCall.options(): Map<String, String> {
     val s = sessions.get<MySession>()
-    return mapOf("accessToken" to (s?.accessToken ?: ""), "version" to appVersion.toString())
+    return mapOf(
+        "accessToken" to (s?.accessToken ?: ""),
+        "version" to appVersion.toString(),
+        "apiPath" to API_URL
+    )
 }
 
 data class MySession(val accessToken: String)
