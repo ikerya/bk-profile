@@ -1,6 +1,9 @@
 package at.gleb.bonusclass
 
+import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.*
+import io.ktor.freemarker.FreeMarker
+import io.ktor.freemarker.FreeMarkerContent
 import io.ktor.http.content.files
 import io.ktor.http.content.static
 import io.ktor.response.*
@@ -9,19 +12,12 @@ import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import io.ktor.sessions.*
-import io.ktor.thymeleaf.Thymeleaf
-import io.ktor.thymeleaf.ThymeleafContent
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
+import java.util.concurrent.ThreadLocalRandom
 
 fun main() {
     val server = embeddedServer(Netty, port = System.getenv("PORT")?.toInt() ?: 8080) {
-
-        install(Thymeleaf) {
-            setTemplateResolver(ClassLoaderTemplateResolver().apply {
-                prefix = "templates/"
-                suffix = ".html"
-                characterEncoding = "utf-8"
-            })
+        install(FreeMarker) {
+            templateLoader = ClassTemplateLoader(Application::class.java.classLoader, "templates")
         }
 
         install(Sessions) {
@@ -36,25 +32,26 @@ fun main() {
                 files("static")
             }
 
-            get("/") {
-                call.respond(ThymeleafContent("index", call.accessToken()))
+           get("/") {
+                call.respond(FreeMarkerContent("index.html", call.accessToken(), "e"))
             }
 
+
             get("/reg") {
-                call.respond(ThymeleafContent("reg", mapOf()))
+                call.respond(FreeMarkerContent("reg.html", call.accessToken()))
             }
 
             get("/reg/apply/{regId}") {
                 val regId = call.parameters["regId"]
-                call.respond(ThymeleafContent("reg_apply", mapOf("regId" to (regId ?: ""))))
+                call.respond(FreeMarkerContent("reg_apply.html", call.accessToken() + mapOf("regId" to (regId ?: ""))))
             }
 
             get("/user") {
-                call.respond(ThymeleafContent("index2", call.accessToken()))
+                call.respond(FreeMarkerContent("index2.html", call.accessToken()))
             }
 
             get("/login") {
-                call.respond(ThymeleafContent("login", call.accessToken()))
+                call.respond(FreeMarkerContent("login.html", call.accessToken()))
             }
 
             get("/reg/session/start/{accessToken}") {
@@ -72,9 +69,15 @@ fun main() {
     server.start(wait = true)
 }
 
+val appVersion by lazy {
+    rnd(1, 1000000)
+}
+fun rnd(min: Int, max: Int) = ThreadLocalRandom.current().nextInt(min, max + 1)
+
+
 private fun ApplicationCall.accessToken(): Map<String, String> {
     val s = sessions.get<MySession>()
-    return mapOf("accessToken" to (s?.accessToken?:""))
+    return mapOf("accessToken" to (s?.accessToken ?: ""), "version" to appVersion.toString())
 }
 
 data class MySession(val accessToken: String)

@@ -3,21 +3,20 @@
     <head>
         <title>Личный кабинет эксперта</title>
         <meta charset="utf-8"/>
-		<link rel="stylesheet" href="./STYLE/fonts.css"/>
+		<link rel="stylesheet" href="./STYLE/fonts.css?${version}"/>
 		<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css?${version}" />
 		
-		<link rel="stylesheet" href="./STYLE/grid_style.css"/>
-		<script src="./SCRIPT/htmlPlus.js"></script>
-        <script src="./SCRIPT/renders.js"></script>
-		<script src="./SCRIPT/user.js"></script>
-		<script src="./SCRIPT/gallery.js"></script>
-		<script src="./SCRIPT/tables.js"></script>
-
+		<link rel="stylesheet" href="./STYLE/grid_style.css?${version}"/>
+		<script src="./SCRIPT/htmlPlus.js?${version}"></script>
+        <script src="./SCRIPT/renders.js?${version}"></script>
+		<script src="./SCRIPT/user.js?${version}"></script>
+		<script src="./SCRIPT/gallery.js?${version}"></script>
+		<script src="./SCRIPT/tables.js?${version}"></script>
 
 		<script type="text/javascript">
-			var accessToken = "[[${accessToken}]]";
+			 const accessToken = "${accessToken}";
 		</script>
     </head>
     <body>
@@ -103,5 +102,5 @@
 			</div>
         </footer>
     </body>
-	<script src="./SCRIPT/launcher.js"></script>
+	<script src="./SCRIPT/launcher.js?${version}"></script>
 </html>
