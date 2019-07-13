@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]>
+<html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8"/>
+	<title>Регистрация</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link rel="shortcut icon" href="favicon.png"/>
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"/>
+	<link rel="stylesheet" href="libs/magnific-popup/magnific-popup.css"/>
+	<link rel="stylesheet" href="libs/slick/slick.css"/>
+	<link rel="stylesheet" href="css/fonts.css"/>
+	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/media.css"/>
+	<link rel="stylesheet" href="css/form.css"/>
+
+	<script>
+        var accessToken = "";
+	</script>
+</head>
+<body>
+<header>
+	<a href="" class="logo">Бонус Класс</a>
+
+	<center>
+		<h2>Регистрация</h2>
+	</center>
+	<!--<ul class="menu">
+		<li><a href="">эксперты моды</a></li>
+		<li><a href="#voting">дизайн опрос</a></li>
+		<li><a href="">бонусная программа</a></li>
+	</ul>
+	<a href="" class="header-phone"><i class="fas fa-phone"></i> +7 926 111 22 33</a>
+	<a href="/user?id=1" class="header-admin"><i class="fas fa-user-circle"></i> Admin</a>
+	<div class="sandwich">
+		<div class="sw-topper"></div>
+		<div class="sw-bottom"></div>
+		<div class="sw-footer"></div>
+	</div>-->
+</header>
+<div class="main">
+
+	<div id="alerts"></div>
+
+	<div class="container">
+		<div style="display: none; text-align: center;
+vertical-align: middle;" id="disallow">
+			Регистрация на сайте Бонус Класс доступна только по приглашениям
+		</div>
+
+			<div style="display: none; text-align: center;
+vertical-align: middle;" id="success">
+				На вашу эл. почту в течение нескольких минут будет послано письмо со ссылкой для подтверждения регистрации. Проверьте, пожалуйста, вашу эл. почту.
+			<br/>
+
+		</div>
+
+
+		<form id="regForm">
+			<div class="row">
+				<div class="col-25">
+					<label for="fname">Имя</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="fname" name="firstname" placeholder="Ваше имя..">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-25">
+					<label for="lname">Фамилия</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="lname" name="lastname" placeholder="Ваша фамилия..">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-25">
+					<label for="gender">Пол</label>
+				</div>
+				<div class="col-75">
+					<select id="gender" name="gender">
+						<option value="1">Мужской</option>
+						<option value="2">Женский</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-25">
+					<label for="userEmail">Эл. почта</label>
+				</div>
+				<div class="col-75">
+					<input type="email" id="userEmail" name="email" placeholder="Ваша эл. почта..">
+				</div>
+			</div>
+
+			<!--<div class="row">
+				<div class="col-25">
+					<label for="country">Country</label>
+				</div>
+				<div class="col-75">
+					<select id="country" name="country">
+						<option value="australia">Australia</option>
+						<option value="canada">Canada</option>
+						<option value="usa">USA</option>
+					</select>
+				</div>
+			</div>-->
+			<!--<div class="row">
+				<div class="col-25">
+					<label for="subject">Subject</label>
+				</div>
+				<div class="col-75">
+					<textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+				</div>
+			</div>-->
+			<img class="loader" src="img/lg.-text-entering-comment-loader.gif">
+
+			<div class="row">
+				<a class="mainButton" id="regButton">Регистрация</a>
+			</div>
+
+
+		</form>
+
+	</div>
+</div>
+<footer>
+	<div class="footer-content">
+		<a href="">Бонус Класс</a>
+		© 2018
+	</div>
+</footer>
+<div class="hidden">
+	<div id="voting">
+	</div>
+</div>
+</body>
+<!--[if lt IE 9]>
+<script src="libs/html5shiv/es5-shim.min.js"></script>
+<script src="libs/html5shiv/html5shiv.min.js"></script>
+<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="libs/respond/respond.min.js"></script>
+<![endif]-->
+<script src="libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="libs/slick/slick.js"></script>
+<script src="js/common.js"></script>
+<script src="js/api.js"></script>
+<script src="js/initial.js"></script>
+<script src="js/poll.js"></script>
+<script src="js/reg.js"></script>
+</html>

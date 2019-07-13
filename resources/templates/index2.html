@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Личный кабинет эксперта</title>
+        <meta charset="utf-8"/>
+		<link rel="stylesheet" href="./STYLE/fonts.css"/>
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" />
+		
+		<link rel="stylesheet" href="./STYLE/grid_style.css"/>
+		<script src="./SCRIPT/htmlPlus.js"></script>
+        <script src="./SCRIPT/renders.js"></script>
+		<script src="./SCRIPT/user.js"></script>
+		<script src="./SCRIPT/gallery.js"></script>
+		<script src="./SCRIPT/tables.js"></script>
+
+
+		<script type="text/javascript">
+			var accessToken = "[[${accessToken}]]";
+		</script>
+    </head>
+    <body>
+        <div class="main">
+			<header>
+				<h1 class="logo">
+					<a href="">Бонус-класс</a>
+				</h1>
+				<nav>
+					<ul class="menu">
+						<li>
+							<a href="" target="">эксперты моды</a>
+						</li>
+						<li>
+							<a href="" target="">дизайн-опрос</a>
+						</li>
+						<li>
+							<a href="" target="">бонусная программа</a>
+						</li>
+						<li>
+							<a href="" target="">
+								<i class="fa fas-phone"></i>
+								+7 7 926 111 22 33 
+							</a>
+						</li>
+						<li>
+							<a href="/reg/session/stop" target="">
+								<i class="fa fas-user-circle"></i>
+								Выйти
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</header>
+			<div id="error-box">
+				<span class="error-msg" style="color:rgba(149,0,1,0.73) !important;"></span>
+			</div>
+            <div class="personal-info h-050">
+				<div class="gallery-manager w-025">
+					<div class="photoes ">
+						<div class="gallery"></div>
+					</div>
+					<div class="img-load">
+						<span class="load-invite">Загрузить еще</span>
+						<form enctype="multipart/form-data" method="post" name="fileUpload" id="fileUpload">						
+							<input 
+								type="file"
+								name="uploaded_file"
+								id="uploaded_file"
+								accept="image/*, image/jpg,image/jpeg,image.png,image/gif"/>
+							<button>Загрузить фотографии</button>
+							<p class="attention-msg">В вашей галерее может быть до 100 изображений</p>						
+						</form>
+					</div>		
+				</div>
+
+                <div class="info w-035"></div>
+                <div class="notes-block w-040">
+					<div class="email-contacts">						
+						<p>Вам письмо от админа</p>
+						<p>Написать письмо админу</p>
+						<p>Написать письмо эксперту</p>
+						<!--Так понимаю, что по клику на каждую запись должно открываться окно со списками почтовых адресов админов/ других экспертов-->
+					</div>
+				</div>
+            </div>
+            <div class="votes h-050">
+				<div class="design-votes w-060">
+					<h3>Голосование по дизайну</h3>
+				</div>
+                <div class="auto-info w-040"></div>
+			</div>
+			<div class="table-box"></div>
+        </div>
+        <footer>
+			<div class="footer-content">
+				<a href="">Бонус Класс</a>
+				<div class="add-block">
+						<iframe src="">Здесь отводится место для различной рекламы</iframe>
+						<p classs="about-us"></p>				
+					</div>
+				<span>© 2018</span> 
+			</div>
+        </footer>
+    </body>
+	<script src="./SCRIPT/launcher.js"></script>
+</html>

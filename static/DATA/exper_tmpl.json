@@ -1,0 +1,23 @@
+{
+	"fullName":{
+		"editable": true
+	},
+	"birthday": {
+		"msg": "persInfoMsg",
+		"classes": "attention-msg",
+		"editable": true
+	},
+	"country": {
+		"editable": true
+	},
+	"region": {
+		"editable": true,
+		"msg": "cityInfoMsg",
+		"classes": "attention-msg"
+	},
+	"email": {
+		"editable": true,
+		"linkable": true,
+		"isemail": true
+	}
+}
