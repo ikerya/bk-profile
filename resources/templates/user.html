@@ -10,7 +10,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>Регистрация</title>
+    <title>Бонус Класс -- Мой профиль</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -22,68 +22,109 @@
     <link rel="stylesheet" href="css/fonts.css?${version}"/>
     <link rel="stylesheet" href="css/main.css?${version}"/>
     <link rel="stylesheet" href="css/media.css?${version}"/>
-    <link rel="stylesheet" href="css/form.css?${version}"/>
+    <link rel="stylesheet" href="css/user.css?${version}"/>
 
     <script>
       const accessToken = "${accessToken}";
       const apiPath = '${apiPath}';
+
     </script>
 </head>
 <body>
 <header>
     <a href="/" class="logo">Бонус Класс</a>
-
-    <center>
-        <h2>Вход</h2>
-    </center>
-    <!--<ul class="menu">
+    <ul class="menu">
         <li><a href="">эксперты моды</a></li>
         <li><a href="#voting">дизайн опрос</a></li>
         <li><a href="">бонусная программа</a></li>
     </ul>
     <a href="" class="header-phone"><i class="fas fa-phone"></i> +7 926 111 22 33</a>
-    <a href="/user?id=1" class="header-admin"><i class="fas fa-user-circle"></i> Admin</a>
+    <a id="me" href="/user" class="header-admin"><i class="fas fa-user-circle"></i> Мой профиль</a>
+    <a id="login_btn" href="/login" class="header-admin"><i class="fas fa-user-circle"></i> Войти</a>
+
     <div class="sandwich">
         <div class="sw-topper"></div>
         <div class="sw-bottom"></div>
         <div class="sw-footer"></div>
-    </div>-->
+    </div>
 </header>
 <div class="main">
+    <span>
+      <img class="profile_img" src="img/main-slider-img.jpg">
+    </span>
 
-    <div id="alerts"></div>
+    <div>
+        <span class="prifile_name">Глеб Климов</span>
+        <br/>
+        <span class="profile_status">Покупатель</span>
 
-    <div class="container">
-        <form id="regForm">
-            <div class="row">
-                <div class="col-25">
-                    <label for="email">Email</label>
-                </div>
-                <div class="col-75">
-                    <input type="email" id="email" name="email" placeholder="Ваша эл. почта..">
-                </div>
-            </div>
+        <span class="profile_link">Ссылка</span>
 
-            <div class="row">
-                <div class="col-25">
-                    <label for="password">Пароль</label>
-                </div>
-                <div class="col-75">
-                    <input type="password" id="password" name="password" placeholder="Пароль..">
-                </div>
-            </div>
-
-
-            <img class="loader" src="img/lg.-text-entering-comment-loader.gif">
-
-            <div class="row">
-                <a class="mainButton" id="regButton">Войти</a>
-            </div>
-
-
-        </form>
-
+        <span class="profile_value">11 августа 1988</span>
+        <br/>
+        <span class="profile_hint">11 августа 1988</span>
     </div>
+</div>
+
+<div class="main-region">
+    <span>Московский регион</span>
+    <p>Рейтинг "Золотая сотня лидеров"</p>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Баллы</td>
+            <td>Активные эксперты 1й линии</td>
+            <td>Всего экспертов в 1й линии</td>
+            <td>Активные эксперты 2й и 3й линии</td>
+            <td>Активные эксперты 2й и 3й линии</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0078</td>
+            <td>998000</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0078</td>
+            <td>998000</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0078</td>
+            <td>998000</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0078</td>
+            <td>998000</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0078</td>
+            <td>998000</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+            <td>54</td>
+        </tr>
+    </table>
 </div>
 <footer>
     <div class="footer-content">
@@ -109,5 +150,4 @@
 <script src="js/api.js?${version}"></script>
 <script src="js/initial.js?${version}"></script>
 <script src="js/poll.js?${version}"></script>
-<script src="js/login.js?${version}"></script>
 </html>

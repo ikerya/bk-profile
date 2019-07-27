@@ -84,6 +84,10 @@ fun main() {
                 call.respond(FreeMarkerContent("index2.html", call.options()))
             }
 
+            get("/user2") {
+                call.respond(FreeMarkerContent("user.html", call.options()))
+            }
+
             get("/login") {
                 call.respond(FreeMarkerContent("login.html", call.options()))
             }

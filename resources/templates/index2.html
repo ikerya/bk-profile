@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<script type="text/javascript">
+			 const accessToken = "${accessToken}";
+             const apiPath = '${apiPath}';
+		</script>
+
         <title>Личный кабинет эксперта</title>
         <meta charset="utf-8"/>
 		<link rel="stylesheet" href="./STYLE/fonts.css?${version}"/>
@@ -15,16 +20,12 @@
 		<script src="./SCRIPT/gallery.js?${version}"></script>
 		<script src="./SCRIPT/tables.js?${version}"></script>
 
-		<script type="text/javascript">
-			 const accessToken = "${accessToken}";
-             const apiPath = '${apiPath}';
-		</script>
     </head>
     <body>
         <div class="main">
 			<header>
 				<h1 class="logo">
-					<a href="">Бонус-класс</a>
+					<a href="/">Бонус-класс</a>
 				</h1>
 				<nav>
 					<ul class="menu">
