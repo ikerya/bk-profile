@@ -1,0 +1,100 @@
+{
+    "allExperts": [
+        {
+            "initials": "M15",
+            "points": 998000,
+            "firstLineFol": {
+                "total": 128,
+                "active": 0
+            },
+            "otherLineFol": {
+                "total": 1995,
+                "active": 0
+            }
+        },
+        {
+            "initials": "B5",
+            "points": 898000,
+            "firstLineFol": {
+                "total": 99,
+                "active": 0
+            },
+            "otherLineFol": {
+                "total": 1555,
+                "active": 0 
+            }
+        },
+        {
+            "initials": "H5",
+            "points": 786000,
+            "firstLineFol": {
+                "total": 89,
+                "active": 0
+            },
+            "otherLineFol": {
+                "total": 1432,
+                "active": 0
+            }
+        },
+        {
+            "initials": "E9",
+            "points": 744000,
+            "firstLineFol": {
+                "total": 101,
+                "active": 0
+            },
+            "otherLineFol": {
+                "total": 980,
+                "active": 0
+            }
+        },
+        {
+            "initials": "K11",
+            "points": 719000,
+            "firstLineFol": {
+                "total": 90,
+                "active": 0
+            },
+            "otherLineFol": {
+                "total": 876,
+                "active": 0
+            }
+        },
+        {
+            "initials": "A11",
+            "points": 689000,
+            "firstLineFol": {
+                "total": 81,
+                "active": 0
+            },
+            "otherLineFol": {
+                "total": 787,
+                "active": 0
+            }
+        },
+        {
+            "initials": "M9",
+            "points": 334000,
+            "firstLineFol":{
+                "total": 33,
+                "active": 0
+            },
+            "otherLineFol": {
+                "total": 339,
+                "active": 0
+            }
+        },
+        {
+            "initials": "H2",
+            "points": 134000,
+            "firstLineFol": {
+                "total": 30,
+                "active": 0
+            },
+            "otherLineFol": {
+                "total": 219,
+                "active": 0
+            }
+        }
+    ]
+}

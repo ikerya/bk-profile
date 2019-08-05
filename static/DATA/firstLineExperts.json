@@ -1,0 +1,59 @@
+{
+    "experts": [
+        {
+            "fullName": "Мармеладова Катя",
+            "photoExpertPath": "",
+            "region": "Мск",
+            "pointsForBuy": "0",
+            "photoLastBuyPath": "",
+            "pointsForVote": "12000",
+            "email": "kate@mail.ru",
+            "secondaryRel": 3,
+            "tertiaryRel": 12
+        },
+        {
+            "fullName": "Савелова Маша",
+            "photoExpertPath": "",
+            "region": "Мск",
+            "pointsForBuy": "0",
+            "photoLastBuyPath": "",
+            "pointsForVote": "11000",
+            "email": "mary@mail.ru",
+            "secondaryRel": 2,
+            "tertiaryRel": 9
+        },
+        {
+            "fullName": "Касатонова Света",
+            "photoExpertPath": "",
+            "region": "Спб",
+            "pointsForBuy": "0",
+            "photoLastBuyPath": "",
+            "pointsForVote": "9000",
+            "email": "svtl@mail.ru",
+            "secondaryRel": 2,
+            "tertiaryRel": 8
+        },
+        {
+            "fullName": "Миканова Катя",
+            "photoExpertPath": "",
+            "region": "НН",
+            "pointsForBuy": "0",
+            "photoLastBuyPath": "",
+            "pointsForVote": "9000",
+            "email": "kate_m@mail.ru",
+            "secondaryRel": 2,
+            "tertiaryRel": 4
+        },
+        {
+            "fullName": "Конова Света",
+            "photoExpertPath": "",
+            "region": "Рязн",
+            "pointsForBuy": "0",
+            "photoLastBuyPath": "",
+            "pointsForVote": "8000",
+            "email": "svtl_k@mail.ru",
+            "secondaryRel": 1,
+            "tertiaryRel": 1
+        }
+    ]
+}
