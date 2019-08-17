@@ -64,3 +64,10 @@ function decodeQuery(url) {
 }
 
 const user = new User(accessToken);
+
+$(document).ready(() => {
+	user.get()
+		.then(({ photos }) => {
+			profile.setPhotos(photos);
+		});
+});
