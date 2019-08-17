@@ -1,53 +1,24 @@
- var serverAddress = apiPath;
+const api = {};
 
-function checkData(data, onComplete, onError) {
-    data = eval(data);
+api.call = function call(methodName, data = {}, method = 'GET', options = {}) {
+    const methodQuery = decodeQuery(methodName);
+                
+    methodQuery.accessToken = accessToken;
+    methodName = methodName.replace(/\?.+/, '');
+    methodName += `?${encodeQuery(methodQuery)}`;
 
-    if (data.error) {
-        var errCode = data.error.code ? data.error.code : 0;
-        var errMsg = data.error.msg ? data.error.msg : "Неизвестная ошибка";
-        onError(errCode, errMsg)
-    } else {
-        onComplete(data)
-    }
-}
+    options.url = [params.apiDomain, methodName].join("/");
+    options.method = method;
+    options.data = data;
 
+    return new Promise((resolve, reject) => {
+        $.ajax(options)
+            .done(response => {
+                if (!response.error) {
+                    return resolve(response);
+                }
 
-function escapeHtml(unsafe) {
-    return unsafe.toString()
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-function timestampToString(time) {
-    var newDate = new Date();
-    newDate.setTime(time);
-    return newDate.toLocaleString('ru');
-}
-
-/*
-
-function alertSuccess(message){
-    return "<div class=\"sufee-alert alert with-close alert-success alert-dismissible fade show\">\n" +
-        "                                            <span class=\"badge badge-pill badge-success\">Успешно</span>\n" +
-        "                                                "+ message + "\n" +
-        "                                              <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-        "                                                <span aria-hidden=\"true\">&times;</span>\n" +
-        "                                            </button>\n" +
-        "                                        </div>\n"  ;
-}
-
-
-function alettDanger(message) {
-    return "<div class=\"sufee-alert alert with-close alert-danger alert-dismissible fade show\">\n" +
-    "                                            <span class=\"badge badge-pill badge-danger\">Ошибка</span>\n" +
-    "                                                "+ message + "\n" +
-    "                                              <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n" +
-    "                                                <span aria-hidden=\"true\">&times;</span>\n" +
-    "                                            </button>\n" +
-    "                                        </div>";
-
-}*/
+                reject(response.error);
+            });
+    });
+};
