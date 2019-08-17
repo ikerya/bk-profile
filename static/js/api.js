@@ -7,7 +7,7 @@ api.call = function call(methodName, data = {}, method = 'GET', options = {}) {
     methodName = methodName.replace(/\?.+/, '');
     methodName += `?${encodeQuery(methodQuery)}`;
 
-    options.url = [params.apiDomain, methodName].join("/");
+    options.url = [apiPath, methodName].join("/");
     options.method = method;
     options.data = data;
 
