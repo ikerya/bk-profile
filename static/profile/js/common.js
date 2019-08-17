@@ -48,4 +48,19 @@ function encodeQuery(formdata, numericPrefix, argSeparator, encType) {
     return tmp.join(argSeparator)
 }
 
+function decodeQuery(url) {
+    var queryString = (url || "").match(/\?.+/);
+
+    if (!queryString) return {};
+
+    var queryString = queryString[0].substr(1);
+    var query = {};
+    var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+    for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+    return query;
+}
+
 const user = new User(accessToken);
