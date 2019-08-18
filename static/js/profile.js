@@ -16,7 +16,7 @@ profile.initSelectors = function initSelectors() {
 	};
 };
 
-profile.setProfilePhoto = function setProfilePhoto() {
+profile.updateProfilePhoto = function updateProfilePhoto() {
 	const profilePhoto = this.photos[0];
 
 	this.selectors.photo.css('background', `url('${profilePhoto.photoSmall}')`);
@@ -28,7 +28,7 @@ profile.setPhotos = function setPhotos({ photos, gender }) {
 		[{
 			photoSmall: this.defaultPhoto[gender - 1]
 		}];
-	this.setProfilePhoto();
+	this.updateProfilePhoto();
 
 	console.log('setPhotos', this.photos);
 };
@@ -53,21 +53,27 @@ profile.updateUploadButton = function updateUploadButton(text, locked = false) {
 		]('locked');
 };
 
+profile.addPhoto = function addPhoto(response) {
+	this.photos = [
+		response,
+		...this.photos
+	];
+};
+
 profile.uploadPhoto = function uploadPhoto() {
 	const { file } = this.selectors.upload;
 
 	this.updateUploadButton('Загрузка...', true);
 	files.upload(file.selector, true)
 		.then(response => {
-			this.updateUploadButton('Загружено');
+			this.addPhoto(response);
 
-			return wait(2, response);
-		})
-		.then(response => {
-			this.updateUploadButton('Загрузить ещё');
 			return user.addPhoto(response);
 		})
-		.then(console.warn);
+		.then(photoId => {
+			this.updateUploadButton('Загрузить ещё');
+			this.updateProfilePhoto();
+		});
 };
 
 $(document).ready(() => {
