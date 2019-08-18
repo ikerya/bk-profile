@@ -42,7 +42,7 @@ profile.initUploadPhotoButton = function initUploadPhotoButton() {
 	);
 };
 
-profile.updateUploadButton = function updateUploadButton(text, locked = true) {
+profile.updateUploadButton = function updateUploadButton(text, locked = false) {
 	this.selectors.upload.button
 		.html(text)
 		[locked ?
@@ -57,9 +57,9 @@ profile.uploadPhoto = function uploadPhoto() {
 	this.updateUploadButton('Загрузка...', true);
 	files.upload(file.selector, true)
 		.then(response => {
-			this.updateUploadButton('Загружено');
+			this.`updateUploadButton`('Загружено');
 
-			return wait(1500, response);
+			return wait(1, response);
 		})
 		.then((...args) => {
 			this.updateUploadButton('Загрузить ещё');
