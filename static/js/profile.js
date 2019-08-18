@@ -44,7 +44,7 @@ profile.initUploadPhotoButton = function initUploadPhotoButton() {
 
 profile.uploadPhoto = function uploadPhoto() {
 	const { file } = this.selectors.upload;
-	const photo = file.files[0];
+	const photo = file[0].files[0];
 
 	console.log(photo);
 };
