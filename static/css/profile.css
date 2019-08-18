@@ -41,6 +41,11 @@
 	background: #34495eeb;
 }
 
+.profile .left_section i {
+    width: 22px;
+    vertical-align: -1px;
+}
+
 #upload_photo_file {
 	display: none;
 }
