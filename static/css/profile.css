@@ -19,11 +19,13 @@
 	margin: 0px auto;
 }
 
-.profile .left_section .upload_photo_wrap {
+.profile .left_section .upload_photo_wrap,
+.profile .left_section .gallery_open_wrap {
 	margin-top: 10px;
 }
 
-.profile .left_section .upload_photo_button {
+.profile .left_section .upload_photo_button,
+.profile .left_section .gallery_open_button {
     padding: 8px 0px;
     text-align: center;
     background: #34495ede;
@@ -33,7 +35,8 @@
     transition: all 0.12s ease-in-out;
 }
 
-.profile .left_section .upload_photo_button:hover {
+.profile .left_section .upload_photo_button:hover,
+.profile .left_section .gallery_open_button:hover {
     cursor: pointer;
 	background: #34495eeb;
 }
