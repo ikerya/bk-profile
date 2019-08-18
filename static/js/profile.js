@@ -17,15 +17,17 @@ profile.initSelectors = function initSelectors() {
 };
 
 profile.setProfilePhoto = function setProfilePhoto() {
-	const profilePhotoUrl = this.photos[0];
+	const profilePhoto = this.photos[0];
 
-	this.selectors.photo.css('background', `url('${profilePhotoUrl}')`);
+	this.selectors.photo.css('background', `url('${profilePhoto.photoSmall}')`);
 };
 
 profile.setPhotos = function setPhotos({ photos, gender }) {
 	this.photos = photos.length ? 
 		photos:
-		[ this.defaultPhoto[gender - 1] ];
+		[{
+			photoSmall: this.defaultPhoto[gender - 1]
+		}];
 	this.setProfilePhoto();
 
 	console.log('setPhotos', this.photos);
