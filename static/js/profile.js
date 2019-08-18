@@ -15,7 +15,7 @@ profile.initSelectors = function initSelectors() {
 profile.setPhotos = function setPhotos({ photos, gender }) {
 	this.photos = photos.length ? 
 		photos:
-		this.defaultPhoto[gender - 1];
+		[ this.defaultPhoto[gender - 1] ];
 	console.log('setPhotos', this.photos);
 };
 
