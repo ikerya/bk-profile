@@ -18,6 +18,11 @@
     opacity: 1;
 }
 
+.locked {
+    opacity: .7;
+    pointer-events: none;
+}
+
 .fl_l {
     float: left;
 }

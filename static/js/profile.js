@@ -42,11 +42,29 @@ profile.initUploadPhotoButton = function initUploadPhotoButton() {
 	);
 };
 
+profile.updateUploadButton = function updateUploadButton(text, locked = true) {
+	this.selectors.upload.button
+		.html(text)
+		[locked ?
+			'addClass':
+			'removeClass'
+		]('locked');
+};
+
 profile.uploadPhoto = function uploadPhoto() {
 	const { file } = this.selectors.upload;
 
+	this.updateUploadButton('Загрузка...', true);
 	files.upload(file.selector, true)
-		.then(console.warn);
+		.then(response => {
+			this.updateUploadButton('Загружено');
+
+			return wait(1500, response);
+		})
+		.then((...args) => {
+			this.updateUploadButton('Загрузить ещё');
+			console.error(args);
+		});
 };
 
 $(document).ready(() => {

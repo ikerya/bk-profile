@@ -63,6 +63,17 @@ function decodeQuery(url) {
     return query;
 }
 
+function wait(s, ...rest) {
+	return new Promise(resolve =>
+		setTimeout(() =>
+			resolve(rest.length > 1 ?
+				rest:
+				rest[0]
+			)
+		, s * 1000)
+	);
+}
+
 const user = new User(accessToken);
 
 $(document).ready(() => {
