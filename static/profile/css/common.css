@@ -1,0 +1,22 @@
+.inline {
+	display: inline-block;
+}
+
+.profile {
+    width: 95%;
+    margin: 10px auto;
+}
+
+.profile .left_section {
+	width: 150px;
+}
+
+.profile .right_section {
+	width: calc(100% - 150px);
+}
+
+.profile .photo {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+}

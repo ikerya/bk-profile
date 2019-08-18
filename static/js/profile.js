@@ -12,10 +12,16 @@ profile.initSelectors = function initSelectors() {
 	selectors.photo = selectors.profile.find('.photo');
 };
 
+profile.setProfilePhoto = function setProfilePhoto(url) {
+	this.selectors.photo.attr('background', `url('${url}')`);
+};
+
 profile.setPhotos = function setPhotos({ photos, gender }) {
 	this.photos = photos.length ? 
 		photos:
 		[ this.defaultPhoto[gender - 1] ];
+	this.setProfilePhoto();
+
 	console.log('setPhotos', this.photos);
 };
 
