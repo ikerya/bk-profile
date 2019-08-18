@@ -69,5 +69,6 @@ $(document).ready(() => {
 	user.get()
 		.then(userInfo => {
 			profile.setPhotos(userInfo);
+			profile.initUploadPhotoButton();
 		});
 });

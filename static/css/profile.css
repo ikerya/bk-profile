@@ -37,3 +37,7 @@
     cursor: pointer;
 	background: #34495eeb;
 }
+
+#upload_photo_file {
+	display: none;
+}

@@ -10,6 +10,10 @@ profile.initSelectors = function initSelectors() {
 	
 	selectors.profile = $('.profile');
 	selectors.photo = selectors.profile.find('.photo');
+	selectors.upload = {
+		button: selectors.profile.find('#upload_photo_button'),
+		file: selectors.profile.find('#upload_photo_file')
+	}
 };
 
 profile.setProfilePhoto = function setProfilePhoto() {
@@ -25,6 +29,24 @@ profile.setPhotos = function setPhotos({ photos, gender }) {
 	this.setProfilePhoto();
 
 	console.log('setPhotos', this.photos);
+};
+
+profile.initUploadPhotoButton = function initUploadPhotoButton() {
+	const { button, file } = this.selectors.upload;
+
+	button.addEventListener('click', () =>
+		file.click()
+	);
+	file.addEventListener('change', () =>
+		profile.uploadPhoto()
+	);
+};
+
+profile.uploadPhoto = function uploadPhoto() {
+	const { file } = this.selectors.upload;
+	const photo = file.files[0];
+
+	console.log(photo);
 };
 
 $(document).ready(() => {
