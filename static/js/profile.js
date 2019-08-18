@@ -55,8 +55,8 @@ profile.updateUploadButton = function updateUploadButton(text, locked = false) {
 
 profile.addPhoto = function addPhoto(response) {
 	this.photos = [
-		response,
-		...this.photos
+		...this.photos,
+		response
 	];
 };
 
