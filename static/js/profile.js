@@ -17,7 +17,7 @@ profile.initSelectors = function initSelectors() {
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
-	const profilePhoto = this.photos[0];
+	const profilePhoto = this.photos[this.photos.length - 1];
 
 	this.selectors.photo.css('background', `url('${profilePhoto.photoSmall}')`);
 };
