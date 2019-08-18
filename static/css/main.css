@@ -18,6 +18,32 @@
     opacity: 1;
 }
 
+.fl_l {
+    float: left;
+}
+
+.fl_r {
+    float: right;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.clearfix {
+    display: block;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content: '';
+}
+
+.clearfix:after {
+    clear: both;
+}
+
 html {
     -webkit-text-size-adjust: 100%;
 }
