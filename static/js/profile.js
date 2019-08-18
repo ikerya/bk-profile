@@ -12,8 +12,10 @@ profile.initSelectors = function initSelectors() {
 	selectors.photo = selectors.profile.find('.photo');
 };
 
-profile.setProfilePhoto = function setProfilePhoto(url) {
-	this.selectors.photo.attr('background', `url('${url}')`);
+profile.setProfilePhoto = function setProfilePhoto() {
+	const profilePhotoUrl = this.photos[0];
+
+	this.selectors.photo.attr('background', `url('${profilePhotoUrl}')`);
 };
 
 profile.setPhotos = function setPhotos({ photos, gender }) {
