@@ -13,7 +13,7 @@ profile.initSelectors = function initSelectors() {
 	selectors.upload = {
 		button: selectors.profile.find('#upload_photo_button'),
 		file: selectors.profile.find('#upload_photo_file')
-	}
+	};
 };
 
 profile.setProfilePhoto = function setProfilePhoto() {
@@ -34,10 +34,10 @@ profile.setPhotos = function setPhotos({ photos, gender }) {
 profile.initUploadPhotoButton = function initUploadPhotoButton() {
 	const { button, file } = this.selectors.upload;
 
-	button.addEventListener('click', () =>
+	button.on('click', () =>
 		file.click()
 	);
-	file.addEventListener('change', () =>
+	file.on('change', () =>
 		profile.uploadPhoto()
 	);
 };
