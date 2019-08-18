@@ -59,12 +59,13 @@ profile.uploadPhoto = function uploadPhoto() {
 		.then(response => {
 			this.updateUploadButton('Загружено');
 
-			return wait(1, response);
+			return wait(2, response);
 		})
-		.then((...args) => {
+		.then(response => {
 			this.updateUploadButton('Загрузить ещё');
-			console.error(args);
-		});
+			return user.addPhoto(response);
+		})
+		.then(console.warn);
 };
 
 $(document).ready(() => {
