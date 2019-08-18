@@ -71,7 +71,7 @@ profile.uploadPhoto = function uploadPhoto() {
 			return user.addPhoto(response);
 		})
 		.then(photoId => {
-			this.updateUploadButton('Загрузить ещё');
+			this.updateUploadButton('Загрузить');
 			this.updateProfilePhoto();
 		});
 };
