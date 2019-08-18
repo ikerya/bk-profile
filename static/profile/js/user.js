@@ -8,7 +8,10 @@ class User {
 	}
 
 	addPhoto(response) {
-		return api.call(`user/${id}/photos/add`, response, 'POST');
+		return this.get()
+			.then(({ id }) =>
+				api.call(`user/${id}/photos/add`, response, 'POST')
+			);
 	}
 
 	static get(id) {
