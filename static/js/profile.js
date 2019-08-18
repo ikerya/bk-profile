@@ -17,7 +17,7 @@ profile.initSelectors = function initSelectors() {
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
-	const profilePhoto = this.photos[this.photos.length - 1];
+	const profilePhoto = this.photos[0];
 
 	this.selectors.photo.css('background', `url('${profilePhoto.photoSmall}')`);
 };
@@ -55,8 +55,8 @@ profile.updateUploadButton = function updateUploadButton(text, locked = false) {
 
 profile.addPhoto = function addPhoto(response) {
 	this.photos = [
-		...this.photos,
-		response
+		response,
+		...this.photos
 	];
 };
 
