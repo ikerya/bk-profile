@@ -4,10 +4,10 @@ class User {
 	}	
 
 	get() {
-		return api.call('/user/');
+		return api.call('user/');
 	}
 
 	static get(id) {
-		return api.call(`/user/${id}`);
+		return api.call(`user/${id}/`);
 	}
 }

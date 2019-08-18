@@ -8,6 +8,7 @@ profile.initSelectors = function initSelectors() {
 };
 
 profile.setPhotos = function setPhotos(photos) {
+	this.photos = photos;
 	console.log('setPhotos', photos);
 };
 
