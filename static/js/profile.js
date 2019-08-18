@@ -61,9 +61,10 @@ profile.addPhoto = function addPhoto(response) {
 };
 
 profile.uploadPhoto = function uploadPhoto() {
+	const iconHtml = '<i class="fas fa-plus-square"></i>';
 	const { file } = this.selectors.upload;
 
-	this.updateUploadButton('Загрузка...', true);
+	this.updateUploadButton(`${iconHtml} Загрузка...`, true);
 	files.upload(file.selector, true)
 		.then(response => {
 			this.addPhoto(response);
@@ -71,7 +72,7 @@ profile.uploadPhoto = function uploadPhoto() {
 			return user.addPhoto(response);
 		})
 		.then(photoId => {
-			this.updateUploadButton('Загрузить');
+			this.updateUploadButton(`${iconHtml} Загрузить`);
 			this.updateProfilePhoto();
 		});
 };
