@@ -57,7 +57,7 @@ profile.uploadPhoto = function uploadPhoto() {
 	this.updateUploadButton('Загрузка...', true);
 	files.upload(file.selector, true)
 		.then(response => {
-			this.`updateUploadButton`('Загружено');
+			this.updateUploadButton('Загружено');
 
 			return wait(1, response);
 		})
