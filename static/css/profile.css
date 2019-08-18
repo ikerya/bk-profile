@@ -19,9 +19,12 @@
 	margin: 0px auto;
 }
 
-.profile .left_section .upload_photo_wrap,
-.profile .left_section .gallery_open_wrap {
+.profile .left_section .upload_photo_wrap {
 	margin-top: 10px;
+}
+
+.profile .left_section .gallery_open_wrap {
+	margin-top: 5px;
 }
 
 .profile .left_section .upload_photo_button,
