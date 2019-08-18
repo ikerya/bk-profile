@@ -26,8 +26,8 @@
 
 .profile .left_section .upload_photo_button,
 .profile .left_section .gallery_open_button {
-    padding: 8px 0px;
-    text-align: center;
+    padding: 8px 20px;
+    text-align: left;
     background: #34495ede;
     color: #fff;
     font-size: 15px;
@@ -43,6 +43,12 @@
 
 .profile .left_section i {
     width: 22px;
+    vertical-align: -1px;
+}
+
+
+.profile .left_section .upload_photo_button i {
+    width: 19px;
     vertical-align: -1px;
 }
 
