@@ -21,7 +21,7 @@ function startLogin() {
             password: password
         };
 
-        $.get(serverAddress + "/auth/login", params, {withCredentials: true})
+        $.get(apiPath + "/auth/login", params, {withCredentials: true})
             .done(function (data) {
                 checkData(data, function (data) {
                     regSuccess(data)
