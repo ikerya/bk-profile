@@ -71,3 +71,23 @@
     border-radius: 5px;
     background-size: cover !important;
 }
+
+.profile .right_section .gallery .photo .controls {
+    position: absolute;
+    right: 0px;
+    padding: 12px 8px;
+    background: #00000054;
+    color: #fff;
+    border-bottom-left-radius: 5px;
+}
+
+.profile .right_section .gallery .photo .controls i {
+    margin: 0px 8px;
+    opacity: .8;
+    transition: all 0.15s ease-in-out;
+}
+
+.profile .right_section .gallery .photo .controls i:hover {
+    cursor: pointer;
+    opacity: 1;
+}

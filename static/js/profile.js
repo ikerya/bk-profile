@@ -87,11 +87,14 @@ profile.renderGalleryPhotos = function renderGalleryPhotos() {
 	photos.map(this.renderGalleryPhoto.bind(this));
 };
 
-profile.renderGalleryPhoto = function renderGalleryPhoto({ photo }) {
+profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo }, index) {
 	const { photos } = this.selectors.gallery;
 	const photoTpl = `
 		<div class="photo" style="background: url('${photo}');">
-			
+			<div class="controls">
+				<i class="far fa-trash-alt" onclick="profile.deletePhoto(${id});"></i>
+				<i class="fas fa-eye" onclick="profile.viewPhoto(${index});"></i>
+			</div>
 		</div>
 	`;
 
