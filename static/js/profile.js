@@ -156,7 +156,7 @@ profile.removePhoto = function removePhoto(id) {
 }; 
 
 profile.ejectPhoto = function ejectPhoto(id) {
-	this.photos = this.photos.filter(({ photoId }) =>
+	this.photos = this.photos.filter(({ id: photoId }) =>
 		id !== photoId
 	)
 };
