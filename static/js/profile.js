@@ -14,7 +14,10 @@ profile.initSelectors = function initSelectors() {
 		button: selectors.profile.find('#upload_photo_button'),
 		file: selectors.profile.find('#upload_photo_file')
 	};
-	selectors.gallery = selectors.profile.find('.gallery');
+	selectors.gallery = {
+		gallery: selectors.profile.find('.gallery')
+	};
+	selectors.gallery.photos = selectors.gallery.find('.photos');
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
@@ -85,25 +88,25 @@ profile.renderGalleryPhotos = function renderGalleryPhotos() {
 };
 
 profile.renderGalleryPhoto = function renderGalleryPhoto({ photo }) {
-	const { gallery } = this.selectors;
+	const { gallery } = this.selectors.gallery;
 	const photoTpl = `
 		<div class="photo" style="background: url('${photo}');">
 			
 		</div>
 	`;
 
-	gallery.append( $( photoTpl ) );
+	photos.append( $( photoTpl ) );
 };
 
 profile.openGallery = function openGallery() {
-	const { gallery } = this.selectors;
+	const { gallery } = this.selectors.gallery;
 
 	gallery.removeClass('none');
 	return animate(gallery, 'bounceInDown');
 };
 
 profile.hideGallery = function hideGallery() {
-	const { gallery } = this.selectors;
+	const { gallery } = this.selectors.gallery;
 
 	return animate(gallery, 'bounceOutUp')
 		.then(() =>
