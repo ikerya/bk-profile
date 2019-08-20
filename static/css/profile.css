@@ -60,11 +60,7 @@
 }
 
 .profile .right_section .gallery {
-    display: inline-block;
-    width: 360px;
-    height: 300px;
-    margin: 5px;
-    border-radius: 5px;
+    padding: 0px 10px;
 }
 
 .profile .right_section .gallery .photo {
