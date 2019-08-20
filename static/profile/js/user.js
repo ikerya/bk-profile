@@ -14,6 +14,13 @@ class User {
 			);
 	}
 
+	deletePhoto(photoId) {
+		return this.get()
+			.then(({ id }) =>
+				api.call(`user/${id}/photos/delete/${photoId}`)
+			);
+	}
+
 	static get(id) {
 		return api.call(`user/${id}/`);
 	}

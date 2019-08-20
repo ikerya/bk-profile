@@ -117,6 +117,26 @@ profile.hideGallery = function hideGallery() {
 		);
 };
 
+profile.viewPhoto = function viewPhoto(index) {
+	const { photos } = this;
+	const photo = photos[index];
+
+	if (typeof photo === 'undefined') {
+		return;
+	}
+
+	window.open(photo.photoOrig);
+};
+
+profile.deletePhoto = function deletePhoto(id) {
+	return user.deletePhoto(id)
+		.then(response => {
+			console.log('deletePhoto', response);
+
+			return response;
+		});
+};
+
 $(document).ready(() => {
 	profile.initSelectors();
 });

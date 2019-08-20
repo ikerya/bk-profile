@@ -66,6 +66,7 @@
 .profile .right_section .gallery .photo {
     position: relative;
     display: inline-block;
+    overflow: hidden;
     width: 360px;
     height: 300px;
     margin: 5px;
