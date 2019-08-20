@@ -15,9 +15,9 @@ profile.initSelectors = function initSelectors() {
 		file: selectors.profile.find('#upload_photo_file')
 	};
 	selectors.gallery = {
-		gallery: selectors.profile.find('.gallery')
+		main: selectors.profile.find('.gallery')
 	};
-	selectors.gallery.photos = selectors.gallery.find('.photos');
+	selectors.gallery.photos = selectors.gallery.main.find('.photos');
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
@@ -82,13 +82,13 @@ profile.uploadPhoto = function uploadPhoto() {
 };
 
 profile.renderGalleryPhotos = function renderGalleryPhotos() {
-	const { photos } = this;
+	const { main: photos } = this;
 
 	photos.map(this.renderGalleryPhoto.bind(this));
 };
 
 profile.renderGalleryPhoto = function renderGalleryPhoto({ photo }) {
-	const { gallery } = this.selectors.gallery;
+	const { main: gallery } = this.selectors.gallery;
 	const photoTpl = `
 		<div class="photo" style="background: url('${photo}');">
 			
