@@ -82,13 +82,13 @@ profile.uploadPhoto = function uploadPhoto() {
 };
 
 profile.renderGalleryPhotos = function renderGalleryPhotos() {
-	const { main: photos } = this;
+	const { photos } = this;
 
 	photos.map(this.renderGalleryPhoto.bind(this));
 };
 
 profile.renderGalleryPhoto = function renderGalleryPhoto({ photo }) {
-	const { main: gallery } = this.selectors.gallery;
+	const { photos } = this.selectors.gallery;
 	const photoTpl = `
 		<div class="photo" style="background: url('${photo}');">
 			
@@ -99,14 +99,14 @@ profile.renderGalleryPhoto = function renderGalleryPhoto({ photo }) {
 };
 
 profile.openGallery = function openGallery() {
-	const { gallery } = this.selectors.gallery;
+	const { main: gallery } = this.selectors.gallery;
 
 	gallery.removeClass('none');
 	return animate(gallery, 'bounceInDown');
 };
 
 profile.hideGallery = function hideGallery() {
-	const { gallery } = this.selectors.gallery;
+	const { main: gallery } = this.selectors.gallery;
 
 	return animate(gallery, 'bounceOutUp')
 		.then(() =>
