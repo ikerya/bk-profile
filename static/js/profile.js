@@ -104,5 +104,4 @@ profile.hideGallery = function hideGallery() {
 
 $(document).ready(() => {
 	profile.initSelectors();
-	profile.renderGalleryPhotos();
 });
