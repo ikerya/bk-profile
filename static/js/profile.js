@@ -14,6 +14,7 @@ profile.initSelectors = function initSelectors() {
 		button: selectors.profile.find('#upload_photo_button'),
 		file: selectors.profile.find('#upload_photo_file')
 	};
+	selectors.gallery = selectors.profile.find('');
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
@@ -77,6 +78,31 @@ profile.uploadPhoto = function uploadPhoto() {
 		});
 };
 
+profile.renderGalleryPhotos = function renderGalleryPhotos() {
+	const { photos } = this;
+
+	photos.map(this.renderGalleryPhoto.bind(this));
+};
+
+profile.renderGalleryPhoto = function renderGalleryPhoto(photo) {
+	const { photos } = this;
+
+	console.log('renderGalleryPhoto', photo);
+};
+
+profile.openGallery = function openGallery() {
+	const { gallery } = this.selectors;
+
+	return animate(gallery, 'bounceInLeft');
+};
+
+profile.hideGallery = function hideGallery() {
+	const { gallery } = this.selectors;
+
+	return animate(gallery, 'bounceOutRight');
+};
+
 $(document).ready(() => {
 	profile.initSelectors();
+	profile.renderGalleryPhotos();
 });

@@ -58,3 +58,7 @@
 #upload_photo_file {
 	display: none;
 }
+
+.profile .right_section .gallery {
+    display: none;
+}

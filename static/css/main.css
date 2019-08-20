@@ -18,6 +18,10 @@
     opacity: 1;
 }
 
+.none {
+    display: none;
+}
+
 .locked {
     opacity: .7;
     pointer-events: none;
