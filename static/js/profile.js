@@ -14,7 +14,7 @@ profile.initSelectors = function initSelectors() {
 		button: selectors.profile.find('#upload_photo_button'),
 		file: selectors.profile.find('#upload_photo_file')
 	};
-	selectors.gallery = selectors.profile.find('');
+	selectors.gallery = selectors.profile.find('.gallery');
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
