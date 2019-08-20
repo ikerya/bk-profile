@@ -102,7 +102,7 @@ profile.hideGallery = function hideGallery() {
 
 	return animate(gallery, 'bounceOutUp')
 		.then(() =>
-			gallery.removeClass('none')
+			gallery.addClass('none')
 		);
 };
 
