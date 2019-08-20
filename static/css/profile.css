@@ -60,5 +60,17 @@
 }
 
 .profile .right_section .gallery {
+    display: inline-block;
+    width: 360px;
+    height: 300px;
+    margin: 5px;
+    border-radius: 5px;
+}
 
+.profile .right_section .gallery .photo {
+    display: inline-block;
+    width: 360px;
+    height: 300px;
+    margin: 5px;
+    border-radius: 5px;
 }
