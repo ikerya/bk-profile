@@ -90,7 +90,7 @@ profile.renderGalleryPhotos = function renderGalleryPhotos() {
 profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo }, index) {
 	const { photos } = this.selectors.gallery;
 	const photoTpl = `
-		<div class="photo" style="background: url('${photo}');">
+		<div class="photo" style="background: url('${photo}');" data-id="${id}">
 			<div class="controls">
 				<i class="far fa-trash-alt" onclick="profile.deletePhoto(${id});"></i>
 				<i class="fas fa-eye" onclick="profile.viewPhoto(${index});"></i>
@@ -130,12 +130,28 @@ profile.viewPhoto = function viewPhoto(index) {
 
 profile.deletePhoto = function deletePhoto(id) {
 	return user.deletePhoto(id)
-		.then(response => {
-			console.log('deletePhoto', response);
+		.then(isDeleted => {
+			if (!isDeleted) {
+				return;
+			}
 
-			return response;
-		});
+			this.removePhoto(id);
+		})
+		.then(() =>
+			console.log('photo is successfully deleted')
+		);
 };
+
+profile.removePhoto = function removePhoto(id) {
+	const { photos } = this.selectors.gallery;
+	const photoSelector = photos
+		.find(`.photo[data-id='${id}']`);
+
+	return animate(photoSelector, 'flipOutY')
+		.then(() =>
+			photoSelector.remove()
+		);
+}; 
 
 $(document).ready(() => {
 	profile.initSelectors();
