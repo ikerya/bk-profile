@@ -84,10 +84,15 @@ profile.renderGalleryPhotos = function renderGalleryPhotos() {
 	photos.map(this.renderGalleryPhoto.bind(this));
 };
 
-profile.renderGalleryPhoto = function renderGalleryPhoto(photo) {
-	const { photos } = this;
+profile.renderGalleryPhoto = function renderGalleryPhoto({ photo }) {
+	const { gallery } = this.selectors;
+	const photoTpl = `
+		<div class="photo" style="background: url('${photo}');">
+			
+		</div>
+	`;
 
-	console.log('renderGalleryPhoto', photo);
+	gallery.append( $( photoTpl ) );
 };
 
 profile.openGallery = function openGallery() {
