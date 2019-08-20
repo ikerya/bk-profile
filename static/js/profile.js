@@ -132,13 +132,13 @@ profile.deletePhoto = function deletePhoto(id) {
 	return user.deletePhoto(id)
 		.then(isDeleted => {
 			if (!isDeleted) {
-				return;
+				return false;
 			}
 
-			this.removePhoto(id);
+			return this.removePhoto(id);
 		})
-		.then(() =>
-			console.log('photo is successfully deleted')
+		.then(isDeleted =>
+			this.updateProfilePhoto()
 		);
 };
 
@@ -147,11 +147,19 @@ profile.removePhoto = function removePhoto(id) {
 	const photoSelector = photos
 		.find(`.photo[data-id='${id}']`);
 
+	this.ejectPhoto(id);
+
 	return animate(photoSelector, 'flipOutY')
 		.then(() =>
 			photoSelector.remove()
 		);
 }; 
+
+profile.ejectPhoto = function ejectPhoto(id) {
+	this.photos = this.photos.filter(({ photoId }) =>
+		id !== photoId
+	)
+};
 
 $(document).ready(() => {
 	profile.initSelectors();
