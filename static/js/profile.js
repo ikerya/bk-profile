@@ -93,13 +93,17 @@ profile.renderGalleryPhoto = function renderGalleryPhoto(photo) {
 profile.openGallery = function openGallery() {
 	const { gallery } = this.selectors;
 
+	gallery.removeClass('none');
 	return animate(gallery, 'bounceInLeft');
 };
 
 profile.hideGallery = function hideGallery() {
 	const { gallery } = this.selectors;
 
-	return animate(gallery, 'bounceOutRight');
+	return animate(gallery, 'bounceOutRight')
+		.then(() =>
+			gallery.removeClass('none')
+		);
 };
 
 $(document).ready(() => {
