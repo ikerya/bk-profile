@@ -90,13 +90,21 @@ profile.uploadPhoto = function uploadPhoto() {
 		);
 };
 
+profile.cleanGallery = function cleanGallery() {
+	const { main: gallery } = this.selectors.gallery;
+
+	gallery.html('');
+};
+
 profile.renderGalleryPhotos = function renderGalleryPhotos() {
 	if (!this.hasAnyPhoto()) {
 		return this.renderNoPhotos();
 	}
 
-	const { photos } = this.userInfo;
+	this.cleanGallery();
 
+	const { photos } = this.userInfo;
+	
 	photos.map(this.renderGalleryPhoto.bind(this));
 };
 
