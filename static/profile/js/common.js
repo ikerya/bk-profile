@@ -79,7 +79,8 @@ const user = new User(accessToken);
 $(document).ready(() => {
 	user.get()
 		.then(userInfo => {
-            profile.setPhotos(userInfo);
+            profile.setUserInfo(userInfo);
+            profile.setPhotos(); 
             profile.renderGalleryPhotos();
 			profile.initUploadPhotoButton();
 		});

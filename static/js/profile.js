@@ -26,7 +26,12 @@ profile.updateProfilePhoto = function updateProfilePhoto() {
 	this.selectors.photo.css('background', `url('${profilePhoto.photoSmall}')`);
 };
 
-profile.setPhotos = function setPhotos({ photos, gender }) {
+profile.setUserInfo = function setUserInfo(userInfo) {
+	this.userInfo = userInfo;
+};
+
+profile.setPhotos = function setPhotos() {
+	const { photos, gender } = this.userInfo;
 	this.photos = photos.length ? 
 		photos:
 		[{
@@ -77,7 +82,7 @@ profile.uploadPhoto = function uploadPhoto() {
 		})
 		.then(photoId => {
 			this.updateUploadButton(`${iconHtml} Загрузить`);
-			this.updateProfilePhoto();
+			this.setPhotos();
 		});
 };
 
