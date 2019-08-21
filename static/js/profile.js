@@ -90,10 +90,10 @@ profile.uploadPhoto = function uploadPhoto() {
 		);
 };
 
-profile.cleanGallery = function cleanGallery() {
-	const { main: gallery } = this.selectors.gallery;
+profile.cleanGalleryPhotos = function cleanGalleryPhotos() {
+	const { photos } = this.selectors.gallery;
 
-	gallery.html('');
+	photos.html('');
 };
 
 profile.renderGalleryPhotos = function renderGalleryPhotos() {
@@ -101,7 +101,7 @@ profile.renderGalleryPhotos = function renderGalleryPhotos() {
 		return this.renderNoPhotos();
 	}
 
-	this.cleanGallery();
+	this.cleanGalleryPhotos();
 
 	const { photos } = this.userInfo;
 	
