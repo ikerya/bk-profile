@@ -21,7 +21,7 @@ profile.initSelectors = function initSelectors() {
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
-	const profilePhoto = this.photos[0];
+	const profilePhoto = this.userInfo.photos[0];
 
 	this.selectors.photo.css('background', `url('${profilePhoto.photoSmall}')`);
 };
@@ -32,14 +32,14 @@ profile.setUserInfo = function setUserInfo(userInfo) {
 
 profile.setPhotos = function setPhotos() {
 	const { photos, gender } = this.userInfo;
-	this.photos = photos.length ? 
+	this.userInfo.photos = photos.length ? 
 		photos:
 		[{
 			photoSmall: this.defaultPhoto[gender - 1]
 		}];
 	this.updateProfilePhoto();
 
-	console.log('setPhotos', this.photos);
+	console.log('setPhotos', this.userInfo.photos);
 };
 
 profile.initUploadPhotoButton = function initUploadPhotoButton() {
@@ -63,9 +63,9 @@ profile.updateUploadButton = function updateUploadButton(text, locked = false) {
 };
 
 profile.addPhoto = function addPhoto(response) {
-	this.photos = [
+	this.userInfo.photos = [
 		response,
-		...this.photos
+		...this.userInfo.photos
 	];
 };
 
@@ -161,7 +161,7 @@ profile.removePhoto = function removePhoto(id) {
 }; 
 
 profile.ejectPhoto = function ejectPhoto(id) {
-	this.photos = this.photos.filter(({ id: photoId }) =>
+	this.userInfo.photos = this.userInfo.photos.filter(({ id: photoId }) =>
 		id !== photoId
 	)
 };
