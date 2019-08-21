@@ -28,7 +28,7 @@
 }
 
 .profile .left_section .upload_photo_button,
-.profile .left_section .gallery_open_button {
+.profile .left_section .gallery_toggle_button {
     padding: 8px 20px;
     text-align: left;
     background: #34495ede;
@@ -39,9 +39,25 @@
 }
 
 .profile .left_section .upload_photo_button:hover,
-.profile .left_section .gallery_open_button:hover {
+.profile .left_section .gallery_toggle_button:hover {
     cursor: pointer;
 	background: #34495eeb;
+}
+
+.profile .left_section .gallery_toggle_button {
+    background: #00C853 !important;
+}
+
+.profile .left_section .gallery_toggle_button:hover {
+    background: #0ab852 !important;
+}
+
+.profile .left_section .gallery_toggle_button.gallery_shown {
+    background: #f44336 !important;
+}
+
+.profile .left_section .gallery_toggle_button.gallery_shown:hover {
+    background: #e53935 !important;
 }
 
 .profile .left_section i {

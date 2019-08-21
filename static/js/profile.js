@@ -1,4 +1,6 @@
-const profile = {};
+const profile = {
+	galleryOpened: false
+};
 
 profile.defaultPhoto = [
 	'/profile/images/boy.svg',
@@ -15,7 +17,8 @@ profile.initSelectors = function initSelectors() {
 		file: selectors.profile.find('#upload_photo_file')
 	};
 	selectors.gallery = {
-		main: selectors.profile.find('.gallery')
+		main: selectors.profile.find('.gallery'),
+		button: selectors.profile.find('.gallery_toggle_button')
 	};
 	selectors.gallery.photos = selectors.gallery.main.find('.photos');
 };
@@ -152,6 +155,25 @@ profile.getPhotoById = function getPhotoById(id) {
 	return photos.filter(({ id: photoId }) =>
 		photoId === id
 	)[0];
+};
+
+profile.updateGalleryButton = function updateGalleryButton() {
+	const { galleryOpened } = this;
+	const { button } = this.selectors.gallery;
+
+	button[galleryOpened ?
+		'addClass':
+		'removeClass'
+	]('gallery_shown');
+};
+
+profile.toggleGallery = function toggleGallery() {
+	this.galleryOpened = !this.galleryOpened;
+	this.updateGalleryButton();
+
+	return this.galleryOpened ?
+		this.openGallery():
+		this.hideGallery();
 };
 
 profile.openGallery = function openGallery() {
