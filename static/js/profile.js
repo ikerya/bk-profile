@@ -87,7 +87,7 @@ profile.uploadPhoto = function uploadPhoto() {
 };
 
 profile.renderGalleryPhotos = function renderGalleryPhotos() {
-	const { photos } = this;
+	const { photos } = this.userInfo;
 
 	photos.map(this.renderGalleryPhoto.bind(this));
 };
