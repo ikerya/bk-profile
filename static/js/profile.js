@@ -35,7 +35,8 @@ profile.setPhotos = function setPhotos() {
 	this.userInfo.photos = photos.length ? 
 		photos:
 		[{
-			photoSmall: this.defaultPhoto[gender - 1]
+			photoSmall: this.defaultPhoto[gender - 1],
+			isDefault: true
 		}];
 	this.updateProfilePhoto();
 
@@ -92,7 +93,11 @@ profile.renderGalleryPhotos = function renderGalleryPhotos() {
 	photos.map(this.renderGalleryPhoto.bind(this));
 };
 
-profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo }, append = true) {
+profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo, isDefault }, append = true) {
+	if (isDefault) {
+		return;
+	}
+
 	const { photos } = this.selectors.gallery;
 	const photoTpl = `
 		<div class="photo" style="background: url('${photo}');" data-id="${id}">
@@ -153,7 +158,7 @@ profile.deletePhoto = function deletePhoto(id) {
 			return this.removePhoto(id);
 		})
 		.then(isDeleted =>
-			this.updateProfilePhoto()
+			this.setPhotos()
 		);
 };
 
