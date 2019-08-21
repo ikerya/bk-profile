@@ -118,6 +118,10 @@ profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo, isDefault 
 	]( $( photoTpl ) );
 };
 
+profile.renderNoPhotos = function renderNoPhotos() {
+	console.error('renderNoPhotos');
+};
+
 profile.getPhotoById = function getPhotoById(id) {
 	const { photos } = this.userInfo;
 
