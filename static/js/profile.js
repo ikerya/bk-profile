@@ -80,7 +80,7 @@ profile.uploadPhoto = function uploadPhoto() {
 		)
 		.then(response => {
 			this.addPhoto(response);
-			this.renderGalleryPhoto(response);
+			this.renderGalleryPhoto(response, false);
 			this.updateUploadButton(`${iconHtml} Загрузить`);
 			this.setPhotos();
 		});
@@ -92,7 +92,7 @@ profile.renderGalleryPhotos = function renderGalleryPhotos() {
 	photos.map(this.renderGalleryPhoto.bind(this));
 };
 
-profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo }) {
+profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo }, append = true) {
 	const { photos } = this.selectors.gallery;
 	const photoTpl = `
 		<div class="photo" style="background: url('${photo}');" data-id="${id}">
@@ -103,7 +103,10 @@ profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo }) {
 		</div>
 	`;
 
-	photos.append( $( photoTpl ) );
+	photos[append ?
+		'append':
+		'prepend'
+	]( $( photoTpl ) );
 };
 
 profile.getPhotoById = function getPhotoById(id) {
