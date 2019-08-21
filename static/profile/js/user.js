@@ -11,7 +11,11 @@ class User {
 		return this.get()
 			.then(({ id }) =>
 				api.call(`user/${id}/photos/add`, response, 'POST')
-			);
+			)
+			.then(id => ({
+				id,
+				...response
+			}));
 	}
 
 	deletePhoto(photoId) {
