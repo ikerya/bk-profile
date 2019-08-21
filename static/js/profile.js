@@ -103,6 +103,10 @@ profile.cleanGalleryPhotos = function cleanGalleryPhotos() {
 };
 
 profile.renderGalleryPhotos = function renderGalleryPhotos() {
+	if (!this.hasAnyPhoto()) {
+		return;
+	}
+
 	this.cleanGalleryPhotos();
 
 	const { photos } = this.userInfo;
