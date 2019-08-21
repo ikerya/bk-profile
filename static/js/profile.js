@@ -92,18 +92,26 @@ profile.renderGalleryPhotos = function renderGalleryPhotos() {
 	photos.map(this.renderGalleryPhoto.bind(this));
 };
 
-profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo }, index) {
+profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo }) {
 	const { photos } = this.selectors.gallery;
 	const photoTpl = `
 		<div class="photo" style="background: url('${photo}');" data-id="${id}">
 			<div class="controls">
 				<i class="far fa-trash-alt" onclick="profile.deletePhoto(${id});"></i>
-				<i class="fas fa-eye" onclick="profile.viewPhoto(${index});"></i>
+				<i class="fas fa-eye" onclick="profile.viewPhoto(${id});"></i>
 			</div>
 		</div>
 	`;
 
 	photos.append( $( photoTpl ) );
+};
+
+profile.getPhotoById = function getPhotoById(id) {
+	const { photos } = this.userInfo;
+
+	return photos.filter(({ id: photoId }) =>
+		photoId === id
+	)[0];
 };
 
 profile.openGallery = function openGallery() {
@@ -122,9 +130,8 @@ profile.hideGallery = function hideGallery() {
 		);
 };
 
-profile.viewPhoto = function viewPhoto(index) {
-	const { photos } = this.userInfo;
-	const photo = photos[index];
+profile.viewPhoto = function viewPhoto(id) {
+	const photo = this.getPhotoById(id);
 
 	if (typeof photo === 'undefined') {
 		return;
