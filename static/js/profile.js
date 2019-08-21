@@ -75,12 +75,11 @@ profile.uploadPhoto = function uploadPhoto() {
 
 	this.updateUploadButton(`${iconHtml} Загрузка...`, true);
 	files.upload(file.selector, true)
+		.then(response => 
+			user.addPhoto(response)
+		)
 		.then(response => {
 			this.addPhoto(response);
-
-			return user.addPhoto(response);
-		})
-		.then(photoId => {
 			this.updateUploadButton(`${iconHtml} Загрузить`);
 			this.setPhotos();
 		});
