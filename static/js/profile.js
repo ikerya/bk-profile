@@ -80,6 +80,7 @@ profile.uploadPhoto = function uploadPhoto() {
 		)
 		.then(response => {
 			this.addPhoto(response);
+			this.renderGalleryPhoto(response);
 			this.updateUploadButton(`${iconHtml} Загрузить`);
 			this.setPhotos();
 		});
