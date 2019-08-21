@@ -122,7 +122,7 @@ profile.hideGallery = function hideGallery() {
 };
 
 profile.viewPhoto = function viewPhoto(index) {
-	const { photos } = this;
+	const { photos } = this.userInfo;
 	const photo = photos[index];
 
 	if (typeof photo === 'undefined') {
