@@ -44,7 +44,9 @@ profile.setPhotos = function setPhotos() {
 		this.renderNoPhotos();
 	}
 
-	console.log('setPhotos', this.userInfo.photos);
+	console.log('setPhotos', this.userInfo.photos, {
+		hasAnyPhoto: this.hasAnyPhoto()
+	});
 };
 
 profile.initUploadPhotoButton = function initUploadPhotoButton() {
