@@ -173,7 +173,7 @@ profile.deletePhoto = function deletePhoto(id) {
 profile.hasAnyPhoto = function hasAnyPhoto() {
 	const { photos } = this.userInfo;
 
-	return photos.length || photos[0].isDefault;
+	return photos.length && !photos[0].isDefault;
 };
 
 profile.removePhoto = function removePhoto(id) {
