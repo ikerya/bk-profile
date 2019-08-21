@@ -93,3 +93,21 @@
     cursor: pointer;
     opacity: 1;
 }
+
+.profile .right_section .gallery .empty {
+    text-align: center;
+    padding: 50px 0px;
+}
+
+.profile .right_section .gallery .empty .poster {
+    background: url('/img/empty_shelves.svg');
+    width: 120px;
+    height: 120px;
+    margin: 0px auto;
+}
+
+.profile .right_section .gallery .empty .descr {
+    margin-top: 12px;
+    color: #9E9E9E;
+    font-size: 15px;
+}

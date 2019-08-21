@@ -132,7 +132,14 @@ profile.renderGalleryPhoto = function renderGalleryPhoto({ id, photo, isDefault 
 };
 
 profile.renderNoPhotos = function renderNoPhotos() {
-	console.error('renderNoPhotos');
+	const { photos } = this.selectors.gallery;
+
+	photos.html(`
+		<div class="empty">
+			<div class="poster"></div>
+			<div class="descr">Вы еще не добавили ни одной фотографии :(</div>
+		</div>
+	`);
 };
 
 profile.getPhotoById = function getPhotoById(id) {
