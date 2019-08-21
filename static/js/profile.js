@@ -84,7 +84,10 @@ profile.uploadPhoto = function uploadPhoto() {
 			this.renderGalleryPhotos();
 			this.updateUploadButton(`${iconHtml} Загрузить`);
 			this.setPhotos();
-		});
+		})
+		.catch(err =>
+			console.error('uploadPhoto', err)	
+		);
 };
 
 profile.renderGalleryPhotos = function renderGalleryPhotos() {
