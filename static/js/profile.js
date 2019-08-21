@@ -81,13 +81,17 @@ profile.uploadPhoto = function uploadPhoto() {
 		)
 		.then(response => {
 			this.addPhoto(response);
-			this.renderGalleryPhoto(response, false);
+			this.renderGalleryPhotos();
 			this.updateUploadButton(`${iconHtml} Загрузить`);
 			this.setPhotos();
 		});
 };
 
 profile.renderGalleryPhotos = function renderGalleryPhotos() {
+	if (!this.hasAnyPhoto()) {
+		return this.renderNoPhotos();
+	}
+
 	const { photos } = this.userInfo;
 
 	photos.map(this.renderGalleryPhoto.bind(this));
@@ -160,6 +164,12 @@ profile.deletePhoto = function deletePhoto(id) {
 		.then(isDeleted =>
 			this.setPhotos()
 		);
+};
+
+profile.hasAnyPhoto = function hasAnyPhoto() {
+	const { photos } = this.userInfo;
+
+	return photos.length || photos[0].isDefault;
 };
 
 profile.removePhoto = function removePhoto(id) {
