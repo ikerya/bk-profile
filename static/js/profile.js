@@ -40,6 +40,10 @@ profile.setPhotos = function setPhotos() {
 		}];
 	this.updateProfilePhoto();
 
+	if (!this.hasAnyPhoto()) {
+		this.renderNoPhotos();
+	}
+
 	console.log('setPhotos', this.userInfo.photos);
 };
 
@@ -97,10 +101,6 @@ profile.cleanGalleryPhotos = function cleanGalleryPhotos() {
 };
 
 profile.renderGalleryPhotos = function renderGalleryPhotos() {
-	if (!this.hasAnyPhoto()) {
-		return this.renderNoPhotos();
-	}
-
 	this.cleanGalleryPhotos();
 
 	const { photos } = this.userInfo;
