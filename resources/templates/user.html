@@ -19,15 +19,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css?${version}"/>
     <link rel="stylesheet" href="libs/magnific-popup/magnific-popup.css?${version}"/>
     <link rel="stylesheet" href="libs/slick/slick.css?${version}"/>
+    <link rel="stylesheet" href="css/animate.min.css?${version}"/>
     <link rel="stylesheet" href="css/fonts.css?${version}"/>
     <link rel="stylesheet" href="css/main.css?${version}"/>
     <link rel="stylesheet" href="css/media.css?${version}"/>
-    <link rel="stylesheet" href="css/user.css?${version}"/>
+    <link rel="stylesheet" href="css/profile.css?${version}"/>
 
     <script>
       const accessToken = "${accessToken}";
       const apiPath = '${apiPath}';
-
     </script>
 </head>
 <body>
@@ -48,83 +48,35 @@
         <div class="sw-footer"></div>
     </div>
 </header>
-<div class="main">
-    <span>
-      <img class="profile_img" src="img/main-slider-img.jpg">
-    </span>
-
-    <div>
-        <span class="prifile_name">Глеб Климов</span>
-        <br/>
-        <span class="profile_status">Покупатель</span>
-
-        <span class="profile_link">Ссылка</span>
-
-        <span class="profile_value">11 августа 1988</span>
-        <br/>
-        <span class="profile_hint">11 августа 1988</span>
+<div class="profile clearfix">
+    <div class="left_section fl_l">
+        <div class="photo">
+            
+        </div>
+        <div class="upload_photo_wrap">
+            <input type="file" id="upload_photo_file">
+            <div class="upload_photo_button" id="upload_photo_button">
+                <i class="fas fa-plus-square"></i>
+                Загрузить
+            </div>
+        </div>
+        <div class="gallery_open_wrap">
+            <div class="gallery_toggle_button" id="gallery_toggle_button" onclick="profile.toggleGallery();">
+                <i class="far fa-images"></i>
+                Галерея
+            </div>
+        </div>
     </div>
-</div>
+    <div class="right_section fl_r">
+        <div class="gallery none">
+            <div class="photos">
 
-<div class="main-region">
-    <span>Московский регион</span>
-    <p>Рейтинг "Золотая сотня лидеров"</p>
-    <table>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>Баллы</td>
-            <td>Активные эксперты 1й линии</td>
-            <td>Всего экспертов в 1й линии</td>
-            <td>Активные эксперты 2й и 3й линии</td>
-            <td>Активные эксперты 2й и 3й линии</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0078</td>
-            <td>998000</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0078</td>
-            <td>998000</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0078</td>
-            <td>998000</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0078</td>
-            <td>998000</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0078</td>
-            <td>998000</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-            <td>54</td>
-        </tr>
-    </table>
+            </div>
+        </div>
+        <div class="information">
+            Информация о пользователе.
+        </div>
+    </div>
 </div>
 <footer>
     <div class="footer-content">
@@ -146,8 +98,10 @@
 <script src="libs/jquery/jquery-1.11.1.min.js?${version}"></script>
 <script src="libs/magnific-popup/jquery.magnific-popup.min.js?${version}"></script>
 <script src="libs/slick/slick.js?${version}"></script>
-<script src="js/common.js?${version}"></script>
 <script src="js/api.js?${version}"></script>
-<script src="js/initial.js?${version}"></script>
-<script src="js/poll.js?${version}"></script>
+<script src="js/animate.js?${version}"></script>
+<script src="js/files.js?${version}"></script>
+<script src="js/profile.js?${version}"></script>
+<script src="profile/js/user.js?${version}"></script>
+<script src="profile/js/common.js?${version}"></script>
 </html>

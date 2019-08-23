@@ -1,0 +1,129 @@
+.profile {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.profile .left_section {
+	width: 150px;
+}
+
+.profile .right_section {
+	width: calc(100% - 150px);
+}
+
+.profile .left_section .photo {
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	margin: 0px auto;
+}
+
+.profile .left_section .upload_photo_wrap {
+	margin-top: 10px;
+}
+
+.profile .left_section .gallery_open_wrap {
+	margin-top: 5px;
+}
+
+.profile .left_section .upload_photo_button,
+.profile .left_section .gallery_toggle_button {
+    padding: 8px 20px;
+    text-align: left;
+    background: #34495ede;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 50px;
+    transition: all 0.12s ease-in-out;
+}
+
+.profile .left_section .upload_photo_button:hover,
+.profile .left_section .gallery_toggle_button:hover {
+    cursor: pointer;
+	background: #34495eeb;
+}
+
+.profile .left_section .gallery_toggle_button {
+    background: #00C853 !important;
+}
+
+.profile .left_section .gallery_toggle_button:hover {
+    background: #0ab852 !important;
+}
+
+.profile .left_section .gallery_toggle_button.gallery_shown {
+    background: #f44336 !important;
+}
+
+.profile .left_section .gallery_toggle_button.gallery_shown:hover {
+    background: #e53935 !important;
+}
+
+.profile .left_section i {
+    width: 22px;
+    vertical-align: -1px;
+}
+
+
+.profile .left_section .upload_photo_button i {
+    width: 19px;
+    vertical-align: -1px;
+}
+
+#upload_photo_file {
+	display: none;
+}
+
+.profile .right_section .gallery {
+    padding: 0px 8px;
+}
+
+.profile .right_section .gallery .photo {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width: 360px;
+    height: 300px;
+    margin: 5px;
+    border-radius: 5px;
+    background-size: cover !important;
+}
+
+.profile .right_section .gallery .photo .controls {
+    position: absolute;
+    right: 0px;
+    padding: 12px 8px;
+    background: #00000054;
+    color: #fff;
+    border-bottom-left-radius: 5px;
+}
+
+.profile .right_section .gallery .photo .controls i {
+    margin: 0px 8px;
+    opacity: .8;
+    transition: all 0.15s ease-in-out;
+}
+
+.profile .right_section .gallery .photo .controls i:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.profile .right_section .gallery .empty {
+    text-align: center;
+    padding: 50px 0px;
+}
+
+.profile .right_section .gallery .empty .poster {
+    background: url('/img/empty_shelves.svg');
+    width: 120px;
+    height: 120px;
+    margin: 0px auto;
+}
+
+.profile .right_section .gallery .empty .descr {
+    margin-top: 12px;
+    color: #9E9E9E;
+    font-size: 15px;
+}
