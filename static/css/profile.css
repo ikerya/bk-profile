@@ -133,6 +133,7 @@
     margin: 0px 20px;
     padding: 12px 20px;
     border: 1px dotted #3498db;
+    color: #37474F;
     border-radius: 5px;
 }
 
@@ -140,4 +141,8 @@
     margin-bottom: 5px;
     padding-bottom: 1px;
     border-bottom: 1px dotted #bdc3c7;
+}
+
+.profile .right_section .user_info .ref_link a {
+    color: #29B6F6;
 }
