@@ -48,11 +48,11 @@ profile.setUserInfo = function setUserInfo(userInfo) {
 };
 
 profile.renderStatus = function renderStatus() {
-	const { id } = this.userInfo;
+	const { status } = this.userInfo;
 	const { status: main } = this.selectors.userInfo;
 
-	main.html(id ?
-		id:
+	main.html(status ?
+		status:
 		'рекомендатель'
 	);
 };
@@ -104,11 +104,11 @@ profile.renderBirthdate = function renderBirthdate() {
 };
 
 profile.renderRegion = function renderRegion() {
-	const { id } = this.userInfo;
+	const { region } = this.userInfo;
 	const { region: main } = this.selectors.userInfo;
 
-	main.html(id ?
-		id:
+	main.html(region ?
+		region:
 		'не указано'
 	);
 };
