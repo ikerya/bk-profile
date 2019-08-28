@@ -176,8 +176,10 @@ profile.toggleGallery = function toggleGallery() {
 		this.openGallery();
 		this.hideUserInfo();
 	} else {
-		this.hideGallery();
-		this.showUserInfo();
+		this.hideGallery()
+			.then(() =>
+				this.showUserInfo()
+			);
 	}
 };
 
