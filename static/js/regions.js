@@ -12,7 +12,7 @@ regions.load = () => {
     api.call("regions")
         .then(regionList => {
             regions.set(regionList);
-        })
+        });
 };
 
 regions.render = (formSelector, selectedRegionId) => {

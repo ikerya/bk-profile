@@ -118,7 +118,9 @@ profile.renderRefLink = function renderRefLink() {
 	const { refLink: main } = this.selectors.userInfo;
 	const refLink = `https://${location.host}/ref/${id}/1`;
 
-	main.html(refLink);
+	main.html(`
+		<a href="${refLink}" target="_blank">${refLink}</a>
+	`);
 };
 
 profile.renderUserInfo = function renderUserInfo() {
