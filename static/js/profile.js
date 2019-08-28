@@ -77,7 +77,7 @@ profile.renderID = function renderID() {
 	);
 };
 
-profile.name = function name() {
+profile.renderName = function renderName() {
 	const { firstName, lastName } = this.userInfo;
 	const { name: main } = this.selectors.userInfo;
 
@@ -128,6 +128,7 @@ profile.renderUserInfo = function renderUserInfo() {
 	this.renderStatus();
 	this.renderPoints();
 	this.renderID();
+	this.renderName();
 	this.renderEmail();
 	this.renderBirthdate();
 	this.renderRegion();
