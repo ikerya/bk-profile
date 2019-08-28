@@ -27,14 +27,14 @@ profile.initSelectors = function initSelectors() {
 	selectors.userInfo = {
 		main: selectors.profile.find('.user_info')
 	};
-	selectors.userInfo.status = selectors.userInfo.main.find('.status');
-	selectors.userInfo.points = selectors.userInfo.main.find('.points');
-	selectors.userInfo.id = selectors.userInfo.main.find('.id');
-	selectors.userInfo.name = selectors.userInfo.main.find('.name');
-	selectors.userInfo.email = selectors.userInfo.main.find('.email');
-	selectors.userInfo.birthdate = selectors.userInfo.main.find('.birthdate');
-	selectors.userInfo.region = selectors.userInfo.main.find('.region');
-	selectors.userInfo.refLink = selectors.userInfo.main.find('.ref_link');
+	selectors.userInfo.status = selectors.userInfo.main.find('.status .value');
+	selectors.userInfo.points = selectors.userInfo.main.find('.points .value');
+	selectors.userInfo.id = selectors.userInfo.main.find('.id .value');
+	selectors.userInfo.name = selectors.userInfo.main.find('.name .value');
+	selectors.userInfo.email = selectors.userInfo.main.find('.email .value');
+	selectors.userInfo.birthdate = selectors.userInfo.main.find('.birthdate .value');
+	selectors.userInfo.region = selectors.userInfo.main.find('.region .value');
+	selectors.userInfo.refLink = selectors.userInfo.main.find('.ref_link .value');
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
@@ -48,30 +48,63 @@ profile.setUserInfo = function setUserInfo(userInfo) {
 };
 
 profile.renderStatus = function renderStatus() {
+	const { id } = this.userInfo;
+	const { id: main } = this.selectors.userInfo;
 
+	main.html(id ?
+		id:
+		'рекомендатель'
+	);
 };
 
 profile.renderPoints = function renderPoints() {
+	const { points } = this.userInfo;
+	const { points: main } = this.selectors.userInfo;
 
+	main.html(points ?
+		points:
+		'не указано'
+	);
 };
 
 profile.renderID = function renderID() {
 	const { id } = this.userInfo;
 	const { id: main } = this.selectors.userInfo;
 
-	main.html(`Ваш ID на сайте: <b>${id}</b>`);
+	main.html(id ?
+		id:
+		'не указано'
+	);
 };
 
 profile.renderEmail = function renderEmail() {
+	const { email } = this.userInfo;
+	const { email: main } = this.selectors.userInfo;
 
+	main.html(email ?
+		email:
+		'не указано'
+	);
 };
 
 profile.renderBirthdate = function renderBirthdate() {
+	const { birthday } = this.userInfo;
+	const { birthdate: main } = this.selectors.userInfo;
 
+	main.html(birthday ?
+		birthday:
+		'не указано'
+	);
 };
 
 profile.renderRegion = function renderRegion() {
+	const { id } = this.userInfo;
+	const { id: main } = this.selectors.userInfo;
 
+	main.html(id ?
+		id:
+		'не указано'
+	);
 };
 
 profile.renderRefLink = function renderRefLink() {
