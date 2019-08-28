@@ -21,7 +21,7 @@ profile.initSelectors = function initSelectors() {
 		button: selectors.profile.find('.gallery_toggle_button')
 	};
 	selectors.gallery.photos = selectors.gallery.main.find('.photos');
-	selectors.photo = selectors.profile.find('.user_info');
+	selectors.userInfo = selectors.profile.find('.user_info');
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
