@@ -146,3 +146,8 @@
 .profile .right_section .user_info .ref_link a {
     color: #29B6F6;
 }
+
+.profile .right_section .user_info .user_info_row .edit {
+    margin-left: 6px;
+    font-size: 14px;
+}
