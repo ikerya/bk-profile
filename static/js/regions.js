@@ -41,4 +41,14 @@ regions.getSelected = formSelector => {
     return regionSelect.find("option:selected").val();
 };
 
+regions.getByID = id => {
+	const region = regions.list.filter(({ id: regionID }) =>
+		id === +regionID
+	);
+
+	return region.length ?
+		region[0]:
+    	{};
+};
+
 regions.load();
