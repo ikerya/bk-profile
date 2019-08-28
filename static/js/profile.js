@@ -81,10 +81,7 @@ profile.renderName = function renderName() {
 	const { firstName, lastName } = this.userInfo;
 	const { name: main } = this.selectors.userInfo;
 
-	main.html(id ?
-		`${firstName} ${lastName}`:
-		'не указано'
-	);
+	main.html(`${firstName} ${lastName}`);
 };
 profile.renderEmail = function renderEmail() {
 	const { email } = this.userInfo;
