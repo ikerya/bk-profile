@@ -49,7 +49,7 @@ profile.setUserInfo = function setUserInfo(userInfo) {
 
 profile.renderStatus = function renderStatus() {
 	const { id } = this.userInfo;
-	const { id: main } = this.selectors.userInfo;
+	const { status: main } = this.selectors.userInfo;
 
 	main.html(id ?
 		id:
@@ -99,7 +99,7 @@ profile.renderBirthdate = function renderBirthdate() {
 
 profile.renderRegion = function renderRegion() {
 	const { id } = this.userInfo;
-	const { id: main } = this.selectors.userInfo;
+	const { region: main } = this.selectors.userInfo;
 
 	main.html(id ?
 		id:
