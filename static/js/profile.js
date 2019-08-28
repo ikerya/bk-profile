@@ -185,13 +185,13 @@ profile.openGallery = function openGallery() {
 	const { main: gallery } = this.selectors.gallery;
 
 	gallery.removeClass('none');
-	return animate(gallery, 'bounceInDown');
+	return animate(gallery, 'fadeInDown');
 };
 
 profile.hideGallery = function hideGallery() {
 	const { main: gallery } = this.selectors.gallery;
 
-	return animate(gallery, 'bounceOutUp')
+	return animate(gallery, 'fadeOutUp')
 		.then(() =>
 			gallery.addClass('none')
 		);
@@ -201,13 +201,13 @@ profile.showUserInfo = function showUserInfo() {
 	const { userInfo } = this.selectors;
 
 	userInfo.removeClass('none');
-	return animate(userInfo, 'bounceInUp');
+	return animate(userInfo, 'fadeInUp');
 };
 
 profile.hideUserInfo = function hideUserInfo() {
 	const { userInfo } = this.selectors;
 
-	return animate(userInfo, 'bounceOutDown')
+	return animate(userInfo, 'fadeOutDown')
 		.then(() =>
 			userInfo.addClass('none')
 		);
