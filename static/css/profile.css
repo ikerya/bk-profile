@@ -9,8 +9,7 @@
 }
 
 .profile .right_section {
-    width: 600px;
-    margin: 0px 20px;
+	width: calc(100% - 150px);
 }
 
 .profile .left_section .photo {
@@ -130,6 +129,8 @@
 }
 
 .profile .right_section .user_info {
+    width: 600px;
+    margin: 0px 20px;
     padding: 12px 20px;
     border: 1px dotted #3498db;
     border-radius: 5px;
