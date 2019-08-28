@@ -151,3 +151,11 @@
     margin-left: 6px;
     font-size: 14px;
 }
+
+.profile .right_section .user_info .user_info_row .edit:hover {
+    cursor: pointer;
+}
+
+.profile .right_section .user_info .user_info_row .edit i {
+    vertical-align: -1px;
+}
