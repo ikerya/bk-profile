@@ -21,6 +21,7 @@ profile.initSelectors = function initSelectors() {
 		button: selectors.profile.find('.gallery_toggle_button')
 	};
 	selectors.gallery.photos = selectors.gallery.main.find('.photos');
+	selectors.photo = selectors.profile.find('.user_info');
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
@@ -171,9 +172,13 @@ profile.toggleGallery = function toggleGallery() {
 	this.galleryOpened = !this.galleryOpened;
 	this.updateGalleryButton();
 
-	return this.galleryOpened ?
-		this.openGallery():
+	if (this.galleryOpened) {
+		this.openGallery();
+		this.hideUserInfo();
+	} else {
 		this.hideGallery();
+		this.showUserInfo();
+	}
 };
 
 profile.openGallery = function openGallery() {
@@ -189,6 +194,22 @@ profile.hideGallery = function hideGallery() {
 	return animate(gallery, 'bounceOutUp')
 		.then(() =>
 			gallery.addClass('none')
+		);
+};
+
+profile.showUserInfo = function showUserInfo() {
+	const { userInfo } = this.selectors;
+
+	userInfo.removeClass('none');
+	return animate(userInfo, 'bounceInUp');
+};
+
+profile.hideUserInfo = function hideUserInfo() {
+	const { userInfo } = this.selectors;
+
+	return animate(userInfo, 'bounceOutDown')
+		.then(() =>
+			userInfo.addClass('none')
 		);
 };
 
