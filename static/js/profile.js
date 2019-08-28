@@ -173,8 +173,10 @@ profile.toggleGallery = function toggleGallery() {
 	this.updateGalleryButton();
 
 	if (this.galleryOpened) {
-		this.openGallery();
-		this.hideUserInfo();
+		this.hideUserInfo()
+			.then(() =>
+				this.openGallery()
+			);
 	} else {
 		this.hideGallery()
 			.then(() =>
