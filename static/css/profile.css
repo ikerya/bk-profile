@@ -9,7 +9,8 @@
 }
 
 .profile .right_section {
-	width: calc(100% - 150px);
+    width: 600px;
+    margin: 0px 20px;
 }
 
 .profile .left_section .photo {
@@ -126,4 +127,16 @@
     margin-top: 12px;
     color: #9E9E9E;
     font-size: 15px;
+}
+
+.profile .right_section .user_info {
+    padding: 12px 20px;
+    border: 1px dotted #3498db;
+    border-radius: 5px;
+}
+
+.profile .right_section .user_info .user_info_row {
+    margin-bottom: 5px;
+    padding-bottom: 1px;
+    border-bottom: 1px dotted #bdc3c7;
 }
