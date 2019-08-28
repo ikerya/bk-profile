@@ -106,9 +106,10 @@ profile.renderBirthdate = function renderBirthdate() {
 profile.renderRegion = function renderRegion() {
 	const { region } = this.userInfo;
 	const { region: main } = this.selectors.userInfo;
+	const regionInfo = regions.getByID(region);
 
-	main.html(region ?
-		region:
+	main.html(regionInfo.id ?
+		regionInfo.name:
 		'не указано'
 	);
 };
