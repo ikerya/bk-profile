@@ -12,16 +12,29 @@ profile.initSelectors = function initSelectors() {
 	
 	selectors.profile = $('.profile');
 	selectors.photo = selectors.profile.find('.photo');
+	
 	selectors.upload = {
 		button: selectors.profile.find('#upload_photo_button'),
 		file: selectors.profile.find('#upload_photo_file')
 	};
+
 	selectors.gallery = {
 		main: selectors.profile.find('.gallery'),
 		button: selectors.profile.find('.gallery_toggle_button')
 	};
 	selectors.gallery.photos = selectors.gallery.main.find('.photos');
-	selectors.userInfo = selectors.profile.find('.user_info');
+
+	selectors.userInfo = {
+		main: selectors.profile.find('.user_info')
+	};
+	selectors.userInfo.status = selectors.userInfo.main.find('.status');
+	selectors.userInfo.points = selectors.userInfo.main.find('.points');
+	selectors.userInfo.id = selectors.userInfo.main.find('.id');
+	selectors.userInfo.name = selectors.userInfo.main.find('.name');
+	selectors.userInfo.email = selectors.userInfo.main.find('.email');
+	selectors.userInfo.birthdate = selectors.userInfo.main.find('.birthdate');
+	selectors.userInfo.region = selectors.userInfo.main.find('.region');
+	selectors.userInfo.refLink = selectors.userInfo.main.find('.ref_link');
 };
 
 profile.updateProfilePhoto = function updateProfilePhoto() {
@@ -32,6 +45,51 @@ profile.updateProfilePhoto = function updateProfilePhoto() {
 
 profile.setUserInfo = function setUserInfo(userInfo) {
 	this.userInfo = userInfo;
+};
+
+profile.renderStatus = function renderStatus() {
+
+};
+
+profile.renderPoints = function renderPoints() {
+
+};
+
+profile.renderID = function renderID() {
+	const { id } = this.userInfo;
+	const { id: main } = this.selectors.userInfo;
+
+	main.html(`Ваш ID на сайте: <b>${id}</b>`);
+};
+
+profile.renderEmail = function renderEmail() {
+
+};
+
+profile.renderBirthdate = function renderBirthdate() {
+
+};
+
+profile.renderRegion = function renderRegion() {
+
+};
+
+profile.renderRefLink = function renderRefLink() {
+	const { id } = this.userInfo;
+	const { refLink: main } = this.selectors.userInfo;
+	const refLink = `https://${location.host}/ref/${id}/1`;
+
+	main.html(refLink);
+};
+
+profile.renderUserInfo = function renderUserInfo() {
+	this.renderStatus();
+	this.renderPoints();
+	this.renderID();
+	this.renderEmail();
+	this.renderBirthdate();
+	this.renderRegion();
+	this.renderRefLink();
 };
 
 profile.setPhotos = function setPhotos() {
@@ -202,14 +260,14 @@ profile.hideGallery = function hideGallery() {
 };
 
 profile.showUserInfo = function showUserInfo() {
-	const { userInfo } = this.selectors;
+	const { main: userInfo } = this.selectors.userInfo;
 
 	userInfo.removeClass('none');
 	return animate(userInfo, 'fadeInUp');
 };
 
 profile.hideUserInfo = function hideUserInfo() {
-	const { userInfo } = this.selectors;
+	const { main: userInfo } = this.selectors.userInfo;
 
 	return animate(userInfo, 'fadeOutDown')
 		.then(() =>

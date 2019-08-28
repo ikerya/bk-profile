@@ -82,6 +82,7 @@ $(document).ready(() => {
             profile.setUserInfo(userInfo);
             profile.setPhotos(); 
             profile.renderGalleryPhotos();
+            profile.renderUserInfo();
 			profile.initUploadPhotoButton();
 		});
 });
