@@ -77,6 +77,15 @@ profile.renderID = function renderID() {
 	);
 };
 
+profile.name = function name() {
+	const { firstName, lastName } = this.userInfo;
+	const { name: main } = this.selectors.userInfo;
+
+	main.html(id ?
+		`${firstName} ${lastName}`:
+		'не указано'
+	);
+};
 profile.renderEmail = function renderEmail() {
 	const { email } = this.userInfo;
 	const { email: main } = this.selectors.userInfo;
