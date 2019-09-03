@@ -498,7 +498,17 @@ profile.openBirthdateEditor = function openBirthdateEditor() {
 		}
 	});
 
-	modal.selectors.main.find('#birthdate').datepicker();
+	const birthdatePicker = modal.selectors.main.find('#birthdate')
+		.datepicker({
+			maxDate: new Date()
+		})
+		.data('datepicker');
+	const [ day, month, year ] = birthdate.split('.');
+
+	birthdatePicker.selectDate(birthdate ? 
+		[ month, day, year ].join('.'):
+		new Date()
+	);
 };
 
 $(document).ready(() => {
