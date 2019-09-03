@@ -98,7 +98,7 @@ profile.renderBirthdate = function renderBirthdate() {
 	const { birthdate: main } = this.selectors.userInfo;
 
 	main.html(birthday ?
-		birthday:
+		profile.parseBirthdate(birthday):
 		'не указано'
 	);
 };
@@ -472,6 +472,23 @@ profile.openNameEditor = function openNameEditor() {
 	});
 };
 
+profile.parseBirthdate = function parseBirthdate(time) {
+	const date = new Date(time * 1000);
+	const day = date.getDate();
+	const month = date.getMonth() + 1;
+	const year = date.getFullYear();
+
+	return [ day, month, year ]
+		.map(interpolateInt)
+		.join('.');
+};
+
+profile.parseBirthdateUS = function parseBirthdateUS(time) {
+	const [ day, month, year ] = this.parseBirthdate(time).split('.');
+
+	return [ month, day, year ].join('.');
+};
+
 profile.saveBirthdate = async function saveBirthdate(modal) {
 	const result = {
 		ok: false
@@ -569,15 +586,13 @@ profile.openBirthdateEditor = function openBirthdateEditor() {
 	
 
 	if (birthday) {
-		const [ day, month, year ] = birthday.split('.');
-
 		birthdatePicker.selectDate(
-			new Date( [ month, day, year ].join('.') )
+			new Date( this.parseBirthdateUS(birthday) )
 		);
 	}
 };
 
-profile.getRegionsListTemplate = function getRegionsListTemplate() {
+profile.getRegionsListTemplate = function getRegionsListTemplate(userRegion) {
 	const { list } = regions;
 	let template = `
 		<select id="regions_list">
@@ -585,7 +600,10 @@ profile.getRegionsListTemplate = function getRegionsListTemplate() {
 
 	list.map(({ id, name }) =>
 		template += `
-			<option value="${id}">${name}</option>
+			<option value="${id}" ${userRegion === id ?
+				'selected':
+				''
+			}>${name}</option>
 		`
 	);
 
@@ -602,15 +620,10 @@ profile.saveRegion = async function saveRegion(modal) {
 	};
 	const { main } = modal.selectors;	
 	const regionsList = main.find('#regions_list');
-
-	console.warn(regionsList.selectedIndex);
-
-	if (typeof regionsList.selectedIndex === 'undefined') {
-		return result;
-	}
+	const selectedRegion = +regionsList.find('option:selected').val();
 
 	result.ok = true;
-	result.region = regionsList.options[regionsList.selectedIndex].value;
+	result.region = selectedRegion;
 
 	return result;
 };
@@ -623,7 +636,7 @@ profile.openRegionEditor = function openRegionEditor() {
 		title: 'Редактировать регион',
 		body: `
 			<div class="user_data_row">
-				${this.getRegionsListTemplate()}
+				${this.getRegionsListTemplate(region)}
 			</div>
 		`,
 		footer: {
