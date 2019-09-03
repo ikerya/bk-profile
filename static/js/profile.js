@@ -577,6 +577,119 @@ profile.openBirthdateEditor = function openBirthdateEditor() {
 	}
 };
 
+profile.getRegionsListTemplate = function getRegionsListTemplate() {
+	const { list } = regions;
+	let template = `
+		<select id="regions_list">
+	`;
+
+	list.map(({ id, name }) =>
+		template += `
+			<option value="${id}">${name}</option>
+		`
+	);
+
+	template += `
+		</select>
+	`;
+
+	return template;
+};
+
+profile.saveRegion = async function saveRegion(modal) {
+	const result = {
+		ok: false
+	};
+	const { main } = modal.selectors;	
+	const regionsList = main.find('#regions_list');
+
+	console.warn(regionsList.selectedIndex);
+
+	if (typeof regionsList.selectedIndex === 'undefined') {
+		return result;
+	}
+
+	result.ok = true;
+	result.region = regionsList.options[regionsList.selectedIndex].value;
+
+	return result;
+};
+
+profile.openRegionEditor = function openRegionEditor() {
+	const { region } = this.userInfo;
+	const modal = new Modal({
+		width: 450,
+		opened: true,
+		title: 'Редактировать регион',
+		body: `
+			<div class="user_data_row">
+				${this.getRegionsListTemplate()}
+			</div>
+		`,
+		footer: {
+			buttons: [{
+				text: 'Закрыть',
+				action: function() {
+					this.remove();
+				}
+			}, {
+				text: 'Сохранить',
+				action: function(button) {
+					profile.saveRegion(this)
+						.then(({ ok, region }) => {
+							if (!ok) {
+								return;
+							}
+
+							return user.update({
+								region
+							});
+						})
+						.then(result => {
+							if (typeof result === 'undefined') {
+								notify.create(250, {
+									act: 'error',
+									title: 'Ошибка',
+									message: 'Пожалуйста, не оставляйте поля пустыми.'
+								});
+
+								return;
+							}
+
+							if (!result) {
+								notify.create(250, {
+									act: 'error',
+									title: 'Ошибка',
+									message: 'Не удалось сохранить данные. Повторите попытку.'
+								});
+
+								return;
+							}
+							
+							return user.get();
+						})
+						.then(userInfo => {
+							if (!userInfo || !userInfo.id) {
+								return;
+							}
+
+							profile.setUserInfo(userInfo);
+							profile.renderRegion();
+
+							notify.create(250, {
+								act: 'success',
+								title: 'Успешно',
+								message: 'Ваши данные сохранены.'
+							});
+						});
+				}
+			}]
+		}
+	});
+
+	modal.selectors.main.find('#regions_list').selectric();
+};
+
 $(document).ready(() => {
 	profile.initSelectors();
 });
