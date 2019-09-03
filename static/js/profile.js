@@ -431,6 +431,12 @@ profile.openNameEditor = function openNameEditor() {
 						})
 						.then(result => {
 							if (typeof result === 'undefined') {
+								notify.create(250, {
+									act: 'error',
+									title: 'Ошибка',
+									message: 'Пожалуйста, не оставляйте поля пустыми.'
+								});
+
 								return;
 							}
 
@@ -447,7 +453,7 @@ profile.openNameEditor = function openNameEditor() {
 							return user.get();
 						})
 						.then(userInfo => {
-							if (!userInfo.id) {
+							if (!userInfo || !userInfo.id) {
 								return;
 							}
 
