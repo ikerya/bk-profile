@@ -367,6 +367,28 @@ profile.ejectPhoto = function ejectPhoto(id) {
 	)
 };
 
+profile.openNameEditor = function openNameEditor() {
+	new Modal({
+		width: 300,
+		opened: true,
+		title: 'Редактировать имя',
+		body: '',
+		footer: {
+			buttons: [{
+				text: 'Закрыть',
+				action: function() {
+					this.remove();
+				}
+			}, {
+				text: 'Сохранить',
+				action: function(button) {
+					alert('saving');
+				}
+			}]
+		}
+	});
+};
+
 $(document).ready(() => {
 	profile.initSelectors();
 });
