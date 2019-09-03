@@ -472,6 +472,23 @@ profile.openNameEditor = function openNameEditor() {
 	});
 };
 
+profile.saveBirthdate = async function saveBirthdate(modal) {
+	const result = {
+		ok: false
+	};
+	const { main } = modal.selectors;	
+	const birthdate = main.find('#birthdate');
+
+	if (!birthdate.val()) {
+		return result;
+	}
+
+	result.ok = true;
+	result.birthdate = birthdate.val();
+
+	return result;
+};
+
 profile.openBirthdateEditor = function openBirthdateEditor() {
 	const { birthday } = this.userInfo;
 	const modal = new Modal({
@@ -492,7 +509,53 @@ profile.openBirthdateEditor = function openBirthdateEditor() {
 			}, {
 				text: 'Сохранить',
 				action: function(button) {
+					profile.saveBirthdate(this)
+						.then(({ ok, birthdate }) => {
+							if (!ok) {
+								return;
+							}
 
+							return user.update({
+								birthday: birthdate
+							});
+						})
+						.then(result => {
+							if (typeof result === 'undefined') {
+								notify.create(250, {
+									act: 'error',
+									title: 'Ошибка',
+									message: 'Пожалуйста, не оставляйте поля пустыми.'
+								});
+
+								return;
+							}
+
+							if (!result) {
+								notify.create(250, {
+									act: 'error',
+									title: 'Ошибка',
+									message: 'Не удалось сохранить данные. Повторите попытку.'
+								});
+
+								return;
+							}
+							
+							return user.get();
+						})
+						.then(userInfo => {
+							if (!userInfo || !userInfo.id) {
+								return;
+							}
+
+							profile.setUserInfo(userInfo);
+							profile.renderBirthdate();
+
+							notify.create(250, {
+								act: 'success',
+								title: 'Успешно',
+								message: 'Ваши данные сохранены.'
+							});
+						});
 				}
 			}]
 		}
