@@ -3,10 +3,6 @@ var notify = {
       var winWidth = $(window).width();
       var id = +Math.random().toString().substr(2);
   
-      if (+$.cookie("mobile")) {
-        width = winWidth - 70;
-      }
-  
       var count = $("#notifies .notify").size();
   
       if (count >= 5) {
