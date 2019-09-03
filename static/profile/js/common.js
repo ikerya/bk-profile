@@ -1,3 +1,7 @@
+function interpolateInt(integer) {
+  return integer < 10 ? "0" + integer: integer;
+}
+
 var notify = {
     create: function create(width, params) {
       var winWidth = $(window).width();

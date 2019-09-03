@@ -489,6 +489,12 @@ profile.parseBirthdateUS = function parseBirthdateUS(time) {
 	return [ month, day, year ].join('.');
 };
 
+profile.transformBirthdate = function transformBirthdate(birthdate) {
+	const [ day, month, year ] = birthdate.split('.');
+
+	return new Date( [ month, day, year ].join('.') ).getTime() / 1000;
+};
+
 profile.saveBirthdate = async function saveBirthdate(modal) {
 	const result = {
 		ok: false
@@ -501,7 +507,9 @@ profile.saveBirthdate = async function saveBirthdate(modal) {
 	}
 
 	result.ok = true;
-	result.birthdate = birthdate.val();
+	result.birthdate = this.transformBirthdate( 
+		birthdate.val() 
+	);
 
 	return result;
 };
