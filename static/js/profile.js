@@ -480,7 +480,7 @@ profile.openBirthdateEditor = function openBirthdateEditor() {
 		title: 'Редактировать дату рождения',
 		body: `
 			<div class="user_data_row">
-				<input class="user_data_input" placeholder="Дата вашего рождения.." value="${birthday}" id="birthdate">
+				<input class="user_data_input" placeholder="Нажмите для выбора даты рождения.." id="birthdate">
 			</div>
 		`,
 		footer: {
@@ -503,12 +503,15 @@ profile.openBirthdateEditor = function openBirthdateEditor() {
 			maxDate: new Date()
 		})
 		.data('datepicker');
-	const [ day, month, year ] = birthdate.split('.');
+	
 
-	birthdatePicker.selectDate(birthdate ? 
-		[ month, day, year ].join('.'):
-		new Date()
-	);
+	if (birthday) {
+		const [ day, month, year ] = birthday.split('.');
+
+		birthdatePicker.selectDate(
+			new Date( [ month, day, year ].join('.') )
+		);
+	}
 };
 
 $(document).ready(() => {
