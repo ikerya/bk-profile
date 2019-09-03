@@ -367,6 +367,33 @@ profile.ejectPhoto = function ejectPhoto(id) {
 	)
 };
 
+profile.saveName = async function saveName(modal) {
+	const result = {
+		ok: false
+	};
+	const { main } = modal.selectors;	
+	const firstName = main.find('#first_name');
+	const lastName = main.find('#last_name');
+
+	if (!firstName.val()) {
+		firstName.focus();
+
+		return result;
+	}
+
+	if (!lastName.val()) {
+		lastName.focus();
+
+		return result;
+	}
+
+	result.ok = true;
+	result.firstName = firstName.val();
+	result.lastName = lastName.val();
+
+	return result;
+};
+
 profile.openNameEditor = function openNameEditor() {
 	const { firstName, lastName } = this.userInfo;
 
@@ -391,7 +418,40 @@ profile.openNameEditor = function openNameEditor() {
 			}, {
 				text: 'Сохранить',
 				action: function(button) {
-					alert('saving');
+					profile.saveName(this)
+						.then(({ ok, firstName, lastName }) => {
+							if (!ok) {
+								return;
+							}
+
+							return user.update({
+								firstName,
+								lastName
+							});
+						})
+						.then(result => {
+							if (typeof result === 'undefined') {
+								return;
+							}
+
+							if (!result) {
+								alert('couldn\' save');
+
+								return;
+							}
+							
+							return user.get();
+						})
+						.then(userInfo => {
+							if (!userInfo.id) {
+								return;
+							}
+
+							profile.setUserInfo(userInfo);
+							profile.renderName();
+
+							alert('successfully saved');
+						});
 				}
 			}]
 		}
