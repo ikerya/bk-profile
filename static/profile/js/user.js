@@ -7,6 +7,13 @@ class User {
 		return api.call('user/');
 	}
 
+	update(params = {}) {
+		return this.get()
+			.then(({ id }) =>
+				api.call(`user/${id}`, params, 'POST')
+			);
+	}
+
 	addPhoto(response) {
 		return this.get()
 			.then(({ id }) =>
