@@ -368,11 +368,20 @@ profile.ejectPhoto = function ejectPhoto(id) {
 };
 
 profile.openNameEditor = function openNameEditor() {
+	const { firstName, lastName } = this.userInfo;
+
 	new Modal({
-		width: 300,
+		width: 450,
 		opened: true,
 		title: 'Редактировать имя',
-		body: '',
+		body: `
+			<div class="user_data_row">
+				<input class="user_data_input" placeholder="Введите ваше имя.." value="${firstName}" id="first_name">
+			</div>
+			<div class="user_data_row">
+				<input class="user_data_input" placeholder="Введите вашу фамилию.." value="${lastName}" id="last_name">
+			</div>
+		`,
 		footer: {
 			buttons: [{
 				text: 'Закрыть',
