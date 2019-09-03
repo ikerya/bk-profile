@@ -1,3 +1,64 @@
+var notify = {
+    create: function create(width, params) {
+      var winWidth = $(window).width();
+      var id = +Math.random().toString().substr(2);
+  
+      if (+$.cookie("mobile")) {
+        width = winWidth - 70;
+      }
+  
+      var count = $("#notifies .notify").size();
+  
+      if (count >= 5) {
+        $("#notifies .notify:eq(0)").slideUp(400, function() {
+          $("#notifies .notify:eq(0)").remove();
+        });
+      }
+  
+      $("#notifies").append(
+        '\
+          <div style="display: none; width: ' +
+          width +
+          "px;" +
+          (count > 0 ? " margin-top: 10px" : "") +
+          '" id="notify' +
+          id +
+          '" class="notify br3px' +
+          (params.act ? " notify_" + params.act : "") +
+          '">\
+            <div class="title">' +
+          params.title +
+          '</div>\
+            <div class="message">' +
+          params.message +
+          "</div>\
+          </div>\
+        "
+      );
+      $("#notifies #notify" + id)
+        .attr("data-id", id)
+        .slideDown(400);
+  
+      if (
+        typeof params.not_close_on_hover === "undefined" ||
+        !params.not_close_on_hover
+      ) {
+        $("#notifies #notify" + id).hover(function() {
+          notify.close(id);
+        });
+      }
+  
+      setTimeout(function() {
+        notify.close(id);
+      }, params.tm ? params.tm : 5000);
+    },
+    close: function close(id) {
+      $("#notifies #notify" + id).slideUp(400, function() {
+        $("#notifies #notify" + id).remove();
+      });
+    }
+  };
+
 function encodeQuery(formdata, numericPrefix, argSeparator, encType) {
     var encodeFunc = encodeURIComponent;
 

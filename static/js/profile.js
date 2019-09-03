@@ -435,7 +435,11 @@ profile.openNameEditor = function openNameEditor() {
 							}
 
 							if (!result) {
-								alert('couldn\' save');
+								notify.create(250, {
+									act: 'error',
+									title: 'Ошибка',
+									message: 'Не удалось сохранить данные. Повторите попытку.'
+								});
 
 								return;
 							}
@@ -450,7 +454,11 @@ profile.openNameEditor = function openNameEditor() {
 							profile.setUserInfo(userInfo);
 							profile.renderName();
 
-							alert('successfully saved');
+							notify.create(250, {
+								act: 'success',
+								title: 'Успешно',
+								message: 'Ваши данные сохранены.'
+							});
 						});
 				}
 			}]

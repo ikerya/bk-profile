@@ -1,3 +1,52 @@
+#notifies {
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 20px;
+}
+
+#notifies .notify {
+    opacity: 1;
+    margin-top: 10px;
+    margin-left: 8px;
+    padding: 10px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    cursor: default;
+}
+
+#notifies .notify.notify_error {
+    background: #dd3326;
+}
+
+#notifies .notify.notify_success {
+    background: #27ae60;
+}
+
+#notifies .notify .title {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#notifies .notify .message {
+    margin-top: 2px;
+    font-size: 13px;
+    line-height: 18px
+}
+
+#notifies .notify.notify_error .title {
+    color: #ffffff;
+}
+
+#notifies .notify.notify_success .title {
+    color: #ffffff;
+}
+
+#notifies .notify.notify_error .message, 
+#notifies .notify.notify_success .message {
+    color: #ffffff;
+}
+
 .user_data_row {
     margin: 5px 0px;
 }
