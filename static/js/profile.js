@@ -472,6 +472,35 @@ profile.openNameEditor = function openNameEditor() {
 	});
 };
 
+profile.openBirthdateEditor = function openBirthdateEditor() {
+	const { birthday } = this.userInfo;
+	const modal = new Modal({
+		width: 500,
+		opened: true,
+		title: 'Редактировать дату рождения',
+		body: `
+			<div class="user_data_row">
+				<input class="user_data_input" placeholder="Дата вашего рождения.." value="${birthday}" id="birthdate">
+			</div>
+		`,
+		footer: {
+			buttons: [{
+				text: 'Закрыть',
+				action: function() {
+					this.remove();
+				}
+			}, {
+				text: 'Сохранить',
+				action: function(button) {
+
+				}
+			}]
+		}
+	});
+
+	modal.selectors.main.find('#birthdate').datepicker();
+};
+
 $(document).ready(() => {
 	profile.initSelectors();
 });
