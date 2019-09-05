@@ -758,10 +758,10 @@ profile.saveGender = async function saveGender(modal) {
 	};
 	const { main } = modal.selectors;	
 	const gendersList = main.find('#genders_list');
-	const selectedGender = +regionsList.find('option:selected').val();
+	const selectedGender = +gendersList.find('option:selected').val();
 
 	result.ok = true;
-	result.region = selectedGender;
+	result.gender = selectedGender;
 
 	return result;
 };
