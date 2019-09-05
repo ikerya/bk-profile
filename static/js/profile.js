@@ -724,6 +724,123 @@ profile.openRegionEditor = function openRegionEditor() {
 	modal.selectors.main.find('#regions_list').selectric();
 };
 
+profile.getGendersListTemplate = function getGendersListTemplate(userGender) {
+	const list = [{
+		id: 1,
+		name: 'Мужской',
+	}, {
+		id: 2,
+		name: 'Женский'
+	}];
+	let template = `
+		<select id="genders_list">
+	`;
+
+	list.map(({ id, name }) =>
+		template += `
+			<option value="${id}" ${(id === 2 && !userGender || userGender === 2) || userGender === id ?
+				'selected':
+				''
+			}>${name}</option>
+		`
+	);
+
+	template += `
+		</select>
+	`;
+
+	return template;
+};
+
+profile.saveGender = async function saveGender(modal) {
+	const result = {
+		ok: false
+	};
+	const { main } = modal.selectors;	
+	const gendersList = main.find('#genders_list');
+	const selectedGender = +regionsList.find('option:selected').val();
+
+	result.ok = true;
+	result.region = selectedGender;
+
+	return result;
+};
+
+profile.openGenderEditor = function openGenderEditor() {
+	const { gender } = this.userInfo;
+	const modal = new Modal({
+		width: 450,
+		opened: true,
+		title: 'Редактировать пол',
+		body: `
+			<div class="user_data_row">
+				${this.getGendersListTemplate(gender)}
+			</div>
+		`,
+		footer: {
+			buttons: [{
+				text: 'Закрыть',
+				action: function() {
+					this.remove();
+				}
+			}, {
+				text: 'Сохранить',
+				action: function(button) {
+					profile.saveGender(this)
+						.then(({ ok, gender }) => {
+							if (!ok) {
+								return;
+							}
+
+							return user.update({
+								gender
+							});
+						})
+						.then(result => {
+							if (typeof result === 'undefined') {
+								notify.create(250, {
+									act: 'error',
+									title: 'Ошибка',
+									message: 'Пожалуйста, не оставляйте поля пустыми.'
+								});
+
+								return;
+							}
+
+							if (!result) {
+								notify.create(250, {
+									act: 'error',
+									title: 'Ошибка',
+									message: 'Не удалось сохранить данные. Повторите попытку.'
+								});
+
+								return;
+							}
+							
+							return user.get();
+						})
+						.then(userInfo => {
+							if (!userInfo || !userInfo.id) {
+								return;
+							}
+
+							profile.setUserInfo(userInfo);
+							profile.renderGender();
+
+							notify.create(250, {
+								act: 'success',
+								title: 'Успешно',
+								message: 'Ваши данные сохранены.'
+							});
+						});
+				}
+			}]
+		}
+	});
+
+	modal.selectors.main.find('#genders_list').selectric();
+};
+
 $(document).ready(() => {
 	profile.initSelectors();
 });
