@@ -31,6 +31,7 @@ profile.initSelectors = function initSelectors() {
 	selectors.userInfo.points = selectors.userInfo.main.find('.points .value');
 	selectors.userInfo.id = selectors.userInfo.main.find('.id .value');
 	selectors.userInfo.name = selectors.userInfo.main.find('.name .value');
+	selectors.userInfo.gender = selectors.userInfo.main.find('.gender .value');
 	selectors.userInfo.email = selectors.userInfo.main.find('.email .value');
 	selectors.userInfo.birthdate = selectors.userInfo.main.find('.birthdate .value');
 	selectors.userInfo.region = selectors.userInfo.main.find('.region .value');
@@ -83,6 +84,17 @@ profile.renderName = function renderName() {
 
 	main.html(`${firstName} ${lastName}`);
 };
+
+profile.renderGender = function renderGender() {
+	const { gender } = this.userInfo;
+	const { gender: main } = this.selectors.userInfo;
+
+	main.html(!gender || gender === 2 ?
+		'Женский':
+		'Мужской'
+	);
+};
+
 profile.renderEmail = function renderEmail() {
 	const { email } = this.userInfo;
 	const { email: main } = this.selectors.userInfo;
@@ -129,6 +141,7 @@ profile.renderUserInfo = function renderUserInfo() {
 	this.renderPoints();
 	this.renderID();
 	this.renderName();
+	this.renderGender();
 	this.renderEmail();
 	this.renderBirthdate();
 	this.renderRegion();
