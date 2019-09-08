@@ -46,6 +46,8 @@ function showFields(data) {
                 selector.css('background-image', 'url(' + o1.photoMain + ')');
             }
 
+            selector.attr("href", "/shop" + i)
+
         }
 
     }

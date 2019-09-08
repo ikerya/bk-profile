@@ -92,6 +92,11 @@ fun main() {
                 call.respond(FreeMarkerContent("login.html", call.options()))
             }
 
+            get("/shop{shopId}") {
+                val shopId = call.parameters["shopId"]
+                call.respond(FreeMarkerContent("shop.html", call.options() + mapOf("shopId" to (shopId ?: ""))))
+            }
+
             get("/reg/session/start/{accessToken}") {
                 val regId = call.parameters["accessToken"]
                 call.sessions.set(MySession(regId!!))
