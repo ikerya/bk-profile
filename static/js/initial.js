@@ -9,7 +9,7 @@ $(function () {
 
     }
 
-    $.get(serverAddress + "/shops/", {accessToken: accessToken}, {withCredentials: true})
+    $.get(apiPath + "/shops/", {accessToken: accessToken}, {withCredentials: true})
         .done(function (data) {
             checkData(data, function (data) {
                 showFields(data)

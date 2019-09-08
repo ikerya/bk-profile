@@ -1,1 +1,162 @@
-deferg
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]>
+<html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ru">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <title>Бонус Класс -- Мой профиль</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="shortcut icon" href="favicon.png"/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css?${version}"/>
+    <link rel="stylesheet" href="libs/magnific-popup/magnific-popup.css?${version}"/>
+    <link rel="stylesheet" href="libs/slick/slick.css?${version}"/>
+    <link rel="stylesheet" href="css/animate.min.css?${version}"/>
+    <link rel="stylesheet" href="css/fonts.css?${version}"/>
+    <link rel="stylesheet" href="css/main.css?${version}"/>
+    <link rel="stylesheet" href="css/media.css?${version}"/>
+    <link rel="stylesheet" href="css/profile.css?${version}"/>
+    <link rel="stylesheet" href="css/modal.css?${version}"/>
+    <link rel="stylesheet" href="css/datepicker.min.css?${version}"/>
+    <link rel="stylesheet" href="css/selectric.css?${version}"/>
+
+    <script>
+      const accessToken = "${accessToken}";
+      const apiPath = '${apiPath}';
+    </script>
+</head>
+<body>
+<div id="notifies"></div>
+<header>
+    <a href="/" class="logo">Бонус Класс</a>
+    <ul class="menu">
+        <li><a href="">эксперты моды</a></li>
+        <li><a href="#voting">дизайн опрос</a></li>
+        <li><a href="">бонусная программа</a></li>
+    </ul>
+    <a href="" class="header-phone"><i class="fas fa-phone"></i> +7 926 111 22 33</a>
+    <a id="me" href="/user" class="header-admin"><i class="fas fa-user-circle"></i> Мой профиль</a>
+    <a id="login_btn" href="/login" class="header-admin"><i class="fas fa-user-circle"></i> Войти</a>
+
+    <div class="sandwich">
+        <div class="sw-topper"></div>
+        <div class="sw-bottom"></div>
+        <div class="sw-footer"></div>
+    </div>
+</header>
+<div class="profile clearfix">
+    <div class="left_section fl_l">
+        <div class="photo">
+            
+        </div>
+        <div class="upload_photo_wrap">
+            <input type="file" id="upload_photo_file">
+            <div class="upload_photo_button" id="upload_photo_button">
+                <i class="fas fa-plus-square"></i>
+                Загрузить
+            </div>
+        </div>
+        <div class="gallery_open_wrap">
+            <div class="gallery_toggle_button" id="gallery_toggle_button" onclick="profile.toggleGallery();">
+                <i class="far fa-images"></i>
+                Галерея
+            </div>
+        </div>
+    </div>
+    <div class="right_section fl_r">
+        <div class="gallery none">
+            <div class="photos">
+
+            </div>
+        </div>
+        <div class="user_info">
+            <div class="user_info_row status clearfix">
+                <div class="label fl_l">Статус</div>
+                <div class="value fl_r"></div>
+            </div>
+            <div class="user_info_row points clearfix">
+                <div class="label fl_l">Баллы</div>
+                <div class="value fl_r"></div>
+            </div>
+            <div class="user_info_row id clearfix">
+                <div class="label fl_l">ID на сайте</div>
+                <div class="value fl_r"></div>
+            </div>
+            <div class="user_info_row name clearfix">
+                <div class="label fl_l">Имя</div>
+                <div class="edit fl_r" title="Редактировать">
+                    <i class="fas fa-pencil-alt" onclick="profile.openNameEditor();"></i>
+                </div>
+                <div class="value fl_r"></div>
+            </div>
+            <div class="user_info_row gender clearfix">
+                <div class="label fl_l">Пол</div>
+                <div class="edit fl_r" title="Редактировать">
+                    <i class="fas fa-pencil-alt" onclick="profile.openGenderEditor();"></i>
+                </div>
+                <div class="value fl_r"></div>
+            </div>
+            <div class="user_info_row email clearfix">
+                <div class="label fl_l">E-mail</div>
+                <div class="value fl_r"></div>
+            </div>
+            <div class="user_info_row birthdate clearfix">
+                <div class="label fl_l">Дата рождения</div>
+                <div class="edit fl_r" title="Редактировать">
+                    <i class="fas fa-pencil-alt" onclick="profile.openBirthdateEditor();"></i>
+                </div>
+                <div class="value fl_r"></div>
+            </div>
+            <div class="user_info_row region clearfix">
+                <div class="label fl_l">Регион</div>
+                <div class="edit fl_r" title="Редактировать">
+                    <i class="fas fa-pencil-alt" onclick="profile.openRegionEditor();"></i>
+                </div>
+                <div class="value fl_r"></div>
+            </div>
+            <div class="user_info_row ref_link clearfix">
+                <div class="label fl_l">Реферальная ссылка</div>
+                <div class="value fl_r"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-content">
+        <a href="">Бонус Класс</a>
+        © 2018
+    </div>
+</footer>
+<div class="hidden">
+    <div id="voting">
+    </div>
+</div>
+</body>
+<!--[if lt IE 9]>
+<script src="libs/html5shiv/es5-shim.min.js?${version}"></script>
+<script src="libs/html5shiv/html5shiv.min.js?${version}"></script>
+<script src="libs/html5shiv/html5shiv-printshiv.min.js?${version}"></script>
+<script src="libs/respond/respond.min.js?${version}"></script>
+<![endif]-->
+<script src="libs/jquery/jquery-1.11.1.min.js?${version}"></script>
+<script src="libs/magnific-popup/jquery.magnific-popup.min.js?${version}"></script>
+<script src="libs/slick/slick.js?${version}"></script>
+<script src="js/api.js?${version}"></script>
+<script src="js/animate.js?${version}"></script>
+<script src="js/modal.js?${version}"></script>
+<script src="js/files.js?${version}"></script>
+<script src="js/profile.js?${version}"></script>
+<script src="profile/js/user.js?${version}"></script>
+<script src="profile/js/common.js?${version}"></script>
+<script src="js/regions.js?${version}"></script>
+<script src="js/datepicker.min.js?${version}"></script>
+<script src="js/selectric.js?${version}"></script>
+</html>

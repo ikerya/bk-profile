@@ -1,3 +1,15 @@
+function checkData(data, onComplete, onError) {
+    data = eval(data);
+
+    if (data.error) {
+        var errCode = data.error.code ? data.error.code : 0;
+        var errMsg = data.error.msg ? data.error.msg : "Неизвестная ошибка";
+        onError(errCode, errMsg)
+    } else {
+        onComplete(data)
+    }
+}
+
 $(document).ready(function () {
     $("form").submit(function () {
         $.ajax({
