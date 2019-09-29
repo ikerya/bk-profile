@@ -33,7 +33,7 @@ function startRegistration() {
             gender: gender
         };
 
-        $.get(serverAddress + "/auth/reg", params, {withCredentials: true})
+        $.get(apiPath + "/auth/reg", params, {withCredentials: true})
             .done(function (data) {
                 checkData(data, function (data) {
                     regSuccess();

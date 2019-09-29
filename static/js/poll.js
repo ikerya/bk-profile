@@ -1,8 +1,8 @@
 function openVote() {
-    $.get(serverAddress + "/polls", {accessToken: accessToken}, {withCredentials: true})
+    $.get(apiPath + "/polls", {accessToken: accessToken}, {withCredentials: true})
         .done(function (data) {
             checkData(data, function (data) {
-                showFieldsVote(data[0])
+                checkUserVoted(data[0])
             }, function (errorCode, errorMsg) {
                 // $("#alerts").append(alettDanger("Ошибка " + errorCode + ": " + errorMsg));
                 alert("Ошибка " + errorCode + ": " + errorMsg);
@@ -20,6 +20,29 @@ function openVote() {
 }
 
 var pollData;
+
+function checkUserVoted(dataPoll){
+    $.get(apiPath + "/polls/" + dataPoll.id + "/isCurrentUserVoted", {accessToken: accessToken}, {withCredentials: true})
+            .done(function (data) {
+                checkData(data, function (data) {
+                    showFieldsVote(dataPoll, !data)
+                }, function (errorCode, errorMsg) {
+                    // $("#alerts").append(alettDanger("Ошибка " + errorCode + ": " + errorMsg));
+                    alert("Ошибка " + errorCode + ": " + errorMsg);
+                })
+            })
+            .fail(function () {
+                $("#alerts").append(alettDanger("Ошибка на сервере"));
+
+                alert("Ошибка на сервере")
+            })
+            .always(function () {
+                // $("#add_admin_btn").removeAttr("disabled");
+
+            })
+}
+
+
 
 function showFieldsVote(data, showPreview = true) {
     pollData = data;
@@ -137,6 +160,11 @@ function showFieldsVote(data, showPreview = true) {
     }
 
     $('#start_voting').click(function () {
+                     if(!accessToken){
+                        alert("Голосовать могут только зарегистрированные эксперты. Пожалуйста, авторизируйтесь на сайте для голосования.");
+                        return;
+
+                    }
 
         $("html, body").animate({scrollTop: 0}, "slow");
         $('#start_voting').hide();
@@ -175,11 +203,12 @@ function setVoteResult(data) {
             showFieldsVote(pollData, false);
         },
         error: function(){
-            showFieldsVote(pollData, false);
+//            showFieldsVote(pollData, false);
+            alert("Произошла ошибка; голос не засчитан.")
         },
         processData: false,
         type: 'POST',
-        url: serverAddress + "/polls/setVote?accessToken=" + accessToken
+        url: apiPath + "/polls/"+ pollData.id + "/setVote?accessToken=" + accessToken
     });
 }
 

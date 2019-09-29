@@ -1,5 +1,5 @@
 $(function () {
-    $.get(serverAddress + "/auth/reg/apply", {regId: regId}, {withCredentials: true})
+    $.get(apiPath + "/auth/reg/apply", {regId: regId}, {withCredentials: true})
         .done(function (data) {
             checkData(data, function (data) {
                 regSuccess(data);
